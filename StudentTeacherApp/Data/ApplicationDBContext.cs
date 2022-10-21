@@ -17,7 +17,7 @@ namespace StudentTeacherApp.Data
 
             //modelBuilder.Entity<Student>()
             //    .HasKey(t => new { t.Id });
-
+            
 
             modelBuilder.Entity<Course>()
                 .HasOne(p => p.Teacher)

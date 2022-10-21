@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using StudentTeacherApp.DAO;
 using StudentTeacherApp.Data;
+using StudentTeacherApp.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddScoped<IGenericDAO, GenericDAOImpl>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

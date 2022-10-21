@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.Models
 {
-    public class Teacher
+    public class TeacherDTO
     {
         [Key]
         [Column("TeacherId")]
@@ -14,6 +14,6 @@ namespace StudentTeacherApp.Models
         [Column("Lastname")]
         public string? Lastname { get; set; }
 
-        public List<Course> Courses { get; set; }
+        public List<CourseDTO> Courses { get; set; }
     }
 }

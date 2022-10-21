@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.Models
 {
-    public class Student : IUser
+    public class Student
     {
         [Key]
         [Column("StudentId")]
