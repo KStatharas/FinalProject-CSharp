@@ -36,5 +36,9 @@ namespace StudentTeacherApp.Data
         public DbSet<Teacher> Teacher { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<StudentCourse> StudentCourse { get; set; }
+        public DbSet<StudentTeacherApp.Models.TeacherDTO> TeacherDTO { get; set; }
+        public DbSet<StudentTeacherApp.Models.StudentDTO> StudentDTO { get; set; }
+        public DbSet<StudentTeacherApp.Data.Models.CourseDTO> CourseDTO { get; set; }
+        public DbSet<StudentTeacherApp.Data.Models.StudentCourseDTO> StudentCourseDTO { get; set; }
     }
 }

@@ -1,0 +1,42 @@
+﻿@page
+@model StudentTeacherApp.Pages.StudentCourse.GetStudentCoursesModel
+
+@{
+    ViewData["Title"] = "GetStudentCourses";
+}
+
+<h1>GetStudentCourses</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Course)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StudentCourseDTO) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.StudentId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.StudentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

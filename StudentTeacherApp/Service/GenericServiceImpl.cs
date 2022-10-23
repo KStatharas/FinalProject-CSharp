@@ -18,7 +18,7 @@ namespace StudentTeacherApp.Service
 
         public void AddEntity<T>(T t)
         {
-
+            
             if (typeof(T) is TeacherDTO)
             {
                 Teacher result = convertDTO(t) as Teacher;
@@ -49,16 +49,36 @@ namespace StudentTeacherApp.Service
 
         public List<T> GetAllEntities<T>()
         {
+            return genericDAO.GetAll<T>();
         }
 
         public T GetEntity<T>(int id)
         {
-            throw new NotImplementedException();
+            return genericDAO.Get<T>(id);
         }
 
         public void UpdateEntity<T>(T t)
         {
-            throw new NotImplementedException();
+            if (typeof(T) is TeacherDTO)
+            {
+                Teacher result = convertDTO(t) as Teacher;
+                genericDAO.Update(result);
+            }
+            else if (typeof(T) is StudentDTO)
+            {
+                Student result = convertDTO(t) as Student;
+                genericDAO.Update(result);
+            }
+            else if (typeof(T) is CourseDTO)
+            {
+                Course result = convertDTO(t) as Course;
+                genericDAO.Update(result);
+            }
+            else if (typeof(T) is StudentCourseDTO)
+            {
+                StudentCourse result = convertDTO(t) as StudentCourse;
+                genericDAO.Update(result);
+            }
         }
 
 

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mutantin\\Source\\Repos\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj": {}
+    "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mutantin\\Source\\Repos\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj": {
+    "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mutantin\\Source\\Repos\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj",
+        "projectUniqueName": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj",
         "projectName": "StudentTeacherApp",
-        "projectPath": "C:\\Users\\Mutantin\\Source\\Repos\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj",
-        "packagesPath": "C:\\Users\\Mutantin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mutantin\\Source\\Repos\\FinalProject-CSharp\\StudentTeacherApp\\obj\\",
+        "projectPath": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj",
+        "packagesPath": "C:\\Users\\21Buster\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Mutantin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\21Buster\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -57,6 +57,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.10, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.10, )"
             }
           },
           "imports": [
@@ -78,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

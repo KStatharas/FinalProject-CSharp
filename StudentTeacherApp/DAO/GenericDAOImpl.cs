@@ -79,7 +79,7 @@ namespace StudentTeacherApp.DAO
             }
             else if (typeof(T) is Student)
             {
-                _context.Student.Update(((Student)(object)t);
+                _context.Student.Update((Student)(object)t);
             }
             else if (typeof(T) is Course)
             {
