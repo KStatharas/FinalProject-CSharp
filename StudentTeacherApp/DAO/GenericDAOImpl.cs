@@ -18,52 +18,57 @@ namespace StudentTeacherApp.DAO
         public void Add<T>(T t)
 
         {
-            if (typeof(T) is Teacher)
-            {
-                _context.Teacher.Add((Teacher)(object)t);
-            }
-            else if (typeof(T) is Student)
-            {
-                _context.Student.Add((Student)(object)t);
-            }
-            else if (typeof(T) is Course)
-            {
-                _context.Course.Add((Course)(object)t);
-            }
-            else if (typeof(T) is StudentCourse)
-            {
-                _context.StudentCourse.Add((StudentCourse)(object)t);
-            }
-            _context.SaveChanges();
+                if (t == null) throw new ArgumentNullException(nameof(t));
+
+                if (typeof(T) == typeof(Teacher))
+                {
+                    _context.Teacher.Add((Teacher)(object)t);
+                }
+                else if (typeof(T) == typeof(Student))
+                {
+                    _context.Student.Add((Student)(object)t);
+                }
+                else if (typeof(T) == typeof(Course))
+                {
+                    _context.Course.Add((Course)(object)t);
+                }
+                else if (typeof(T) == typeof(StudentCourse))
+                {
+                    _context.StudentCourse.Add((StudentCourse)(object)t);
+                }
+                _context.SaveChanges();
+           
         }
 
         public void Delete<T>(int id)
         {
-            if (typeof(T) is Teacher)
+
+            if (typeof(T) == typeof(Teacher))
             {
-                _context.Remove(_context.Teacher.FirstOrDefault(x => x.Id == id));
+                var teacher = _context.Teacher.FirstOrDefault(x => x.Id == id);
+                if (teacher is null) throw new ArgumentNullException(nameof(teacher));
+                    _context.Teacher.Remove(teacher);
+
             }
-            else if (typeof(T) is Student)
+            else if (typeof(T) == typeof(Student))
             {
-                _context.Remove(_context.Student.FirstOrDefault(x => x.Id == id));
+                var student = _context.Student.FirstOrDefault(x => x.Id == id);
+                if (student is null) throw new ArgumentNullException(nameof(student));
+                    _context.Student.Remove(student);
             }
-            else if (typeof(T) is Course)
+            else if (typeof(T) == typeof(Course))
             {
-                _context.Remove(_context.Course.FirstOrDefault(x => x.Id == id));
+                var course = _context.Course.FirstOrDefault(x => x.Id == id);
+                if (course is null) throw new ArgumentNullException(nameof(course));
+                    _context.Course.Remove(course);
             }
-            else if (typeof(T) is StudentCourse)
+            else if (typeof(T) == typeof(StudentCourse))
             {
-                _context.Remove(_context.StudentCourse.FirstOrDefault(x => x.StudentId == id));
+                var studentcourse = _context.StudentCourse.FirstOrDefault(x => x.StudentId == id);
+                if (studentcourse is null) throw new ArgumentNullException(nameof(studentcourse));
+                    _context.StudentCourse.Remove(studentcourse);
             }
 
-            //if (uName == "Teacher")
-            //{
-            //    _context.Remove(_context.Teacher.FirstOrDefault(x => x.Id == id));
-            //}
-            //else if (uName == "Student")
-            //{
-            //    _context.Remove(_context.Student.FirstOrDefault(x => x.Id == id));
-            //}
             _context.SaveChanges();
 
 
@@ -72,84 +77,79 @@ namespace StudentTeacherApp.DAO
         }
 
         public void Update<T>(T t)
+
         {
-            if (typeof(T) is Teacher)
+
+            if (t == null) throw new ArgumentNullException(nameof(t));
+
+            if (typeof(T) == typeof(Teacher))
             {
                 _context.Teacher.Update((Teacher)(object)t);
             }
-            else if (typeof(T) is Student)
+            else if (typeof(T) == typeof(Student))
             {
                 _context.Student.Update((Student)(object)t);
             }
-            else if (typeof(T) is Course)
+            else if (typeof(T) == typeof(Course))
             {
                 _context.Course.Update((Course)(object)t);
             }
-            else if (typeof(T) is StudentCourse)
+            else if (typeof(T) == typeof(StudentCourse))
             {
                 _context.StudentCourse.Update((StudentCourse)(object)t);
             }
-
-            //if (uName == "Teacher")
-            //{
-            //    _context.Teacher.Update((Teacher)user);
-            //}
-            //else if (uName == "Student")
-            //{
-            //    _context.Student.Update((Student)user);
-            //}
-            //else if (uName == "Course")
-            //{
-            //    _context.Student.Update((Student)user);
-            //}
-            //else if (uName == "StudentCourse")
-            //{
-
-            //}
 
             _context.SaveChanges();
         }
 
 
-        public T? Get<T>(int id)
+        public T Get<T>(int id)
         {
 
-            if (typeof(T) is Teacher)
+            if (typeof(T) == typeof(Teacher))
             {
-                return (T)(IEnumerable<T>)_context.Teacher.FirstOrDefault(x => x.Id == id);
+                var teacher = _context.Teacher.FirstOrDefault(x => x.Id == id);
+                if (teacher is null) throw new ArgumentNullException(nameof(teacher));
+                return (T)(IEnumerable<T>)teacher;
             }
-            else if (typeof(T) is Student)
+            else if (typeof(T) == typeof(Student))
             {
-                return (T)(IEnumerable<T>)_context.Student.FirstOrDefault(x => x.Id == id);
+                var student = _context.Student.FirstOrDefault(x => x.Id == id);
+                if (student is null) throw new ArgumentNullException(nameof(student));
+                return (T)(IEnumerable<T>)student;
             }
-            else if (typeof(T) is Course)
+            else if (typeof(T) == typeof(Course))
             {
-                return (T)(IEnumerable<T>)_context.Course.FirstOrDefault(x => x.Id == id);
+                var course = _context.Course.FirstOrDefault(x => x.Id == id);
+                if (course is null) throw new ArgumentNullException(nameof(course));
+                return (T)(IEnumerable<T>)course;
             }
-            else if (typeof(T) is StudentCourse)
+            else if (typeof(T) == typeof(StudentCourse))
             {
-                return (T)(IEnumerable<T>)_context.StudentCourse.FirstOrDefault(x => x.CourseId == id);
+                var studentcourse = _context.StudentCourse.FirstOrDefault(x => x.StudentId == id);
+                if (studentcourse is null) throw new ArgumentNullException(nameof(studentcourse));
+                return (T)(IEnumerable<T>)studentcourse;
             }
 
-            return (T)(IEnumerable<T>)_context.Teacher.FirstOrDefault(x => x.Id == id); ;
+            return default(T);
         }
 
         public List<T> GetAll<T>()
         {
 
-            if (typeof(T) is Teacher)
+            if (typeof(T) == typeof(Teacher))
             {
                 return new List<T>((IEnumerable<T>)_context.Teacher.ToList());
             }
-            else if (typeof(T) is Student)
+            else if (typeof(T) == typeof(Student))
             {
                 return new List<T>((IEnumerable<T>)_context.Student.ToList());
             }
-            else if (typeof(T) is Course)
+            else if (typeof(T) == typeof(Course))
             {
                 return new List<T>((IEnumerable<T>)_context.Course.ToList());
             }
-            else if (typeof(T) is StudentCourse)
+            else if (typeof(T) == typeof(StudentCourse))
             {
                 return new List<T>((IEnumerable<T>)_context.StudentCourse.ToList());
             }

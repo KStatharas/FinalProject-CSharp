@@ -19,22 +19,22 @@ namespace StudentTeacherApp.Service
         public void AddEntity<T>(T t)
         {
             
-            if (typeof(T) is TeacherDTO)
+            if (typeof(T) == typeof(TeacherDTO))
             {
                 Teacher result = convertDTO(t) as Teacher;
                 genericDAO.Add(result);
             }
-            else if (typeof(T) is StudentDTO)
+            else if (typeof(T) == typeof(StudentDTO))
             {
                 Student result = convertDTO(t) as Student;
                 genericDAO.Add(result);
             }
-            else if (typeof(T) is CourseDTO)
+            else if (typeof(T) == typeof(CourseDTO))
             {
                 Course result = convertDTO(t) as Course;
                 genericDAO.Add(result);
             }
-            else if (typeof(T) is StudentCourseDTO)
+            else if (typeof(T) == typeof(StudentCourseDTO))
             {
                 StudentCourse result = convertDTO(t) as StudentCourse;
                 genericDAO.Add(result);
@@ -59,22 +59,22 @@ namespace StudentTeacherApp.Service
 
         public void UpdateEntity<T>(T t)
         {
-            if (typeof(T) is TeacherDTO)
+            if (typeof(T) == typeof(TeacherDTO))
             {
                 Teacher result = convertDTO(t) as Teacher;
                 genericDAO.Update(result);
             }
-            else if (typeof(T) is StudentDTO)
+            else if (typeof(T) == typeof(StudentDTO))
             {
                 Student result = convertDTO(t) as Student;
                 genericDAO.Update(result);
             }
-            else if (typeof(T) is CourseDTO)
+            else if (typeof(T) == typeof(CourseDTO))
             {
                 Course result = convertDTO(t) as Course;
                 genericDAO.Update(result);
             }
-            else if (typeof(T) is StudentCourseDTO)
+            else if (typeof(T) == typeof(StudentCourseDTO))
             {
                 StudentCourse result = convertDTO(t) as StudentCourse;
                 genericDAO.Update(result);
@@ -84,9 +84,9 @@ namespace StudentTeacherApp.Service
 
         private T convertDTO<T>(T t)
         {
-            T result = default(T);
+            T result = default;
 
-            if (typeof(T) is TeacherDTO)
+            if (typeof(T) == typeof(TeacherDTO))
             {
                 TeacherDTO tDTO = t as TeacherDTO;
                 Teacher teacher = new()
@@ -97,7 +97,7 @@ namespace StudentTeacherApp.Service
                 };
                 result = (T)(object)teacher;
             }
-            else if (typeof(T) is StudentDTO)
+            else if (typeof(T) == typeof(StudentDTO))
             {
                 StudentDTO tDTO = t as StudentDTO;
                 Student student = new()
@@ -108,7 +108,7 @@ namespace StudentTeacherApp.Service
                 };
                 result = (T)(object)student;
             }
-            else if (typeof(T) is CourseDTO)
+            else if (typeof(T) == typeof(CourseDTO))
             {
                 CourseDTO tDTO = t as CourseDTO;
                 Course course = new()
@@ -119,7 +119,7 @@ namespace StudentTeacherApp.Service
                 };
                 result = (T)(object)course;
             }
-            else if (typeof(T) is StudentCourseDTO)
+            else if (typeof(T) == typeof(StudentCourseDTO))
             {
                 StudentCourseDTO tDTO = t as StudentCourseDTO;
                 StudentCourse studentCourse = new()
