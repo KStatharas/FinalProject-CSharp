@@ -26,7 +26,8 @@ namespace StudentTeacherApp.DAO
                 }
                 else if (typeof(T) == typeof(Student))
                 {
-                    _context.Student.Add((Student)(object)t);
+                    Student student = (Student)(object)t;
+                    _context.Student.Add(student);
                 }
                 else if (typeof(T) == typeof(Course))
                 {
