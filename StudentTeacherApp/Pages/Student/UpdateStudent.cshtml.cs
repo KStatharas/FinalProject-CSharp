@@ -26,7 +26,8 @@ namespace StudentTeacherApp.Pages.Student
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null || _service.GetEntity<StudentDTO>(id) == null)
+            StudentDTO test = _service.GetEntity<StudentDTO>(id);
+            if (id == null || test == null)
             {
                 return NotFound();
             }
