@@ -16,6 +16,6 @@ namespace StudentTeacherApp.Data.Models
 
         public TeacherDTO Teacher { get; set; }
 
-        public List<StudentCourseDTO> StudentCourses { get; set; }
+        public List<StudentCourseDTO> ?StudentCourses { get; set; }
     }
 }

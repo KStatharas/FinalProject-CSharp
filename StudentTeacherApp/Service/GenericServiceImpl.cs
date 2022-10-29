@@ -53,9 +53,9 @@ namespace StudentTeacherApp.Service
             return genericDAO.GetAll<T>();
         }
 
-        public T GetEntity<T>(int id)
+        public F GetEntity<F,T>(int id)
         {
-            return genericDAO.Get<T>(id);
+            return (F)(object)genericDAO.Get<T>(id);
         }
     
 

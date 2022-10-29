@@ -1,0 +1,34 @@
+﻿@page "{id:int}"
+@model DeleteStudentCourseModel
+
+@{
+    ViewData["Title"] = "DeleteStudentCourse";
+}
+
+<h1>DeleteStudentCourse</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StudentCourse</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentCourseDTO.Student)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentCourseDTO.Student.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StudentCourseDTO.Course)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StudentCourseDTO.Course.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="StudentCourseDTO.StudentId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

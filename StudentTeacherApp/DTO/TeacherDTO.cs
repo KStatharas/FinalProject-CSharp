@@ -11,6 +11,6 @@ namespace StudentTeacherApp.Models
         public string? Firstname { get; set; }
         public string? Lastname { get; set; }
 
-        public List<CourseDTO> Courses { get; set; }
+        public List<CourseDTO> ?Courses { get; set; }
     }
 }

@@ -16,7 +16,7 @@ namespace StudentTeacherApp.Data.Models
         [Column("StudentId")]
         public int StudentId { get; set; }
 
-        public StudentDTO Student { get; set; }
-        public CourseDTO Course { get; set; }
+        public StudentDTO ?Student { get; set; }
+        public CourseDTO ?Course { get; set; }
     }
 }
