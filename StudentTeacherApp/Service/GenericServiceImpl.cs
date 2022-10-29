@@ -22,69 +22,69 @@ namespace StudentTeacherApp.Service
 
             if (typeof(T) == typeof(TeacherDTO))
             {
-                Teacher teacher = convertDTO<T,Teacher>(t);
+                Teacher teacher = ConvertDTO<T, Teacher>(t);
                 genericDAO.Add(teacher);
             }
             else if (typeof(T) == typeof(StudentDTO))
             {
-                Student student = convertDTO<T, Student>(t);
+                Student student = ConvertDTO<T, Student>(t);
                 genericDAO.Add(student);
             }
             else if (typeof(T) == typeof(CourseDTO))
             {
-                Course course = convertDTO<T,Course>(t);
+                Course course = ConvertDTO<T, Course>(t);
                 genericDAO.Add(course);
             }
             else if (typeof(T) == typeof(StudentCourseDTO))
             {
-                StudentCourse studentcourse = convertDTO<T,StudentCourse>(t);
+                StudentCourse studentcourse = ConvertDTO<T, StudentCourse>(t);
                 genericDAO.Add(studentcourse);
             }
 
         }
 
-        public void DeleteEntity<T>(int id)
+        public void DeleteEntity<T>(int id) => genericDAO.Delete<T>(id);
+
+        public List<T> GetAllEntities<T>() => genericDAO.GetAll<T>();
+
+
+        public F GetEntity<F, T>(int id)
         {
-            genericDAO.Delete<T>(id);
+            
+            var daoResult = genericDAO.Get<T>(id);
+            if (daoResult is null) return default(F);
+
+            F entity = ConvertModel<T,F>(daoResult);
+            return entity;
         }
 
-        public List<T> GetAllEntities<T>()
-        {
-            return genericDAO.GetAll<T>();
-        }
 
-        public F GetEntity<F,T>(int id)
-        {
-            return (F)(object)genericDAO.Get<T>(id);
-        }
-    
-
-    public void UpdateEntity<T>(T t)
+        public void UpdateEntity<T>(T t)
         {
             if (typeof(T) == typeof(TeacherDTO))
             {
-                Teacher teacher = convertDTO<T, Teacher>(t);
+                Teacher teacher = ConvertDTO<T, Teacher>(t);
                 genericDAO.Update(teacher);
             }
             else if (typeof(T) == typeof(StudentDTO))
             {
-                Student student = convertDTO<T,Student>(t);
+                Student student = ConvertDTO<T, Student>(t);
                 genericDAO.Update(student);
             }
             else if (typeof(T) == typeof(CourseDTO))
             {
-                Course course = convertDTO<T, Course>(t);
+                Course course = ConvertDTO<T, Course>(t);
                 genericDAO.Update(course);
             }
             else if (typeof(T) == typeof(StudentCourseDTO))
             {
-                StudentCourse studentcourse = convertDTO<T, StudentCourse>(t);
+                StudentCourse studentcourse = ConvertDTO<T, StudentCourse>(t);
                 genericDAO.Update(studentcourse);
             }
         }
 
 
-        private U convertDTO<T,U>(T t)
+        private U ConvertDTO<T, U>(T t)
         {
             U result = default;
 
@@ -136,5 +136,58 @@ namespace StudentTeacherApp.Service
             return result;
         }
 
+
+        private T ConvertModel<U,T>(U u)
+        {
+            T result = default;
+
+            if (typeof(U) == typeof(Teacher))
+            {
+                Teacher teacher = u as Teacher;
+                TeacherDTO teacherDTO = new()
+                {
+                    Id = teacher.Id,
+                    Firstname = teacher.Firstname,
+                    Lastname = teacher.Lastname,
+                };
+                result = (T)(object)teacherDTO;
+            }
+            else if (typeof(U) == typeof(Student))
+            {
+                Student student = u as Student;
+                StudentDTO studentDTO = new()
+                {
+                    Id = student.Id,
+                    Firstname = student.Firstname,
+                    Lastname = student.Lastname,
+                };
+                result = (T)(object)studentDTO;
+            }
+            else if (typeof(U) == typeof(Course))
+            {
+                Course course = u as Course;
+                CourseDTO courseDTO = new()
+                {
+                    Id = course.Id,
+                    Description = course.Description,
+                    TeacherId = course.TeacherId,
+                };
+                result = (T)(object)courseDTO;
+            }
+            else if (typeof(U) == typeof(StudentCourse))
+            {
+                StudentCourse studentcourse = u as StudentCourse;
+                StudentCourseDTO studentCourseDTO = new()
+                {
+                    StudentId = studentcourse.StudentId,
+                    CourseId = studentcourse.CourseId
+                };
+                result = (T)(object)studentCourseDTO;
+            }
+
+            return result;
+        }
+
     }
+
 }

@@ -26,12 +26,12 @@ namespace StudentTeacherApp.Pages.Courses
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null || _service.GetEntity<CourseDTO>(id) == null)
+            if (_service.GetEntity<CourseDTO, Course>(id) is default(CourseDTO))
             {
                 return NotFound();
             }
 
-            CourseDTO = _service.GetEntity<CourseDTO>(id);
+            CourseDTO = _service.GetEntity<CourseDTO,Course>(id);
            
            //ViewData["TeacherId"] = new SelectList(_context.TeacherDTO, "Id", "Id");
             return Page();

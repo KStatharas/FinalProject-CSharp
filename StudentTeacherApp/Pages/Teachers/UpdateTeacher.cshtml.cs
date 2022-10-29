@@ -25,12 +25,12 @@ namespace StudentTeacherApp.Pages.Teachers
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null || _service.GetEntity<TeacherDTO>(id) == null)
+            if (_service.GetEntity<TeacherDTO,Teacher>(id) is default(TeacherDTO))
             {
                 return NotFound();
             }
 
-            TeacherDTO = _service.GetEntity<TeacherDTO>(id);
+            TeacherDTO = _service.GetEntity<TeacherDTO,Teacher>(id);
       
             return Page();
         }

@@ -28,12 +28,12 @@ namespace StudentTeacherApp.Pages.Students
         public async Task<IActionResult> OnGetAsync(int id)
         {
             
-            if (_service.GetEntity<StudentDTO>(id) is default(Student))
+            if (_service.GetEntity<StudentDTO,Student>(id) is default(StudentDTO))
             {
                 return NotFound();
             }
 
-            StudentDTO = (StudentDTO)(object)_service.GetEntity<Student>(id);
+            StudentDTO = (StudentDTO)(object)_service.GetEntity<StudentDTO,Student>(id);
           
             return Page();
         }
@@ -46,7 +46,7 @@ namespace StudentTeacherApp.Pages.Students
                 return Page();
             }
 
-            _service.UpdateEntity(StudentDTO);
+            _service.UpdateEntity<StudentDTO>(StudentDTO);
 
             //_context.Attach(StudentDTO).State = EntityState.Modified;
 
