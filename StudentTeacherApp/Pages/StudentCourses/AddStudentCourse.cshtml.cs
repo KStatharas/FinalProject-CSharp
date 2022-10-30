@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.StudentCourses
@@ -19,11 +20,10 @@ namespace StudentTeacherApp.Pages.StudentCourses
             _service = service;
         }
 
-
         public IActionResult OnGet()
         {
-            //ViewData["CourseId"] = new SelectList(_context.CourseDTO, "Id", "Id");
-            //ViewData["StudentId"] = new SelectList(_context.StudentDTO, "Id", "Id");
+            ViewData["CourseId"] = new SelectList(_service.GetAllEntities<Course>(), "Id", "Id");
+            ViewData["StudentId"] = new SelectList(_service.GetAllEntities<Student>(), "Id", "Id");
             return Page();
         }
 

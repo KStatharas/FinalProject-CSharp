@@ -7,6 +7,7 @@ namespace StudentTeacherApp.Data.Models
 {
     public class StudentCourse
     {
+        [Key]
         [ForeignKey("Course")]
         [Column("CourseId")]
         public int CourseId { get; set; }
