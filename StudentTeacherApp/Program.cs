@@ -14,6 +14,19 @@ builder.Services.AddScoped<IGenericService, GenericServiceImpl>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAuthentication("LoginCredAuth").AddCookie("LoginCredAuth", options =>
+{
+    options.Cookie.Name = "LoginCredAuth";
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/ForbiddenAccess";
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminAccessibility",
+        policy => policy.RequireClaim("Admin"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +42,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

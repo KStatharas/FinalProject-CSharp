@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\21Buster\source\repos\CSharp-FinalProject\StudentTeacherApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Account/ForbiddenAccess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxGb3JiaWRkZW5BY2Nlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Courses/AddCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xBZGRDb3Vyc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
