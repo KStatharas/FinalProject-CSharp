@@ -25,7 +25,8 @@ namespace StudentTeacherApp.Pages.Account
                 {
                     new Claim(ClaimTypes.Name,"admin"),
                     new Claim(ClaimTypes.Email,"admin@schoolsev.gr"),
-                    new Claim("Admin","User")
+                    new Claim("Admin","User"),
+                    new Claim(ClaimTypes.Role,"Someone")
                 };
                 var identity = new ClaimsIdentity(claims,"LoginCredAuth");
                 ClaimsPrincipal principal = new ClaimsPrincipal(identity);
