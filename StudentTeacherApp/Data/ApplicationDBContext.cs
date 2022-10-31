@@ -17,7 +17,7 @@ namespace StudentTeacherApp.Data
 
             //modelBuilder.Entity<Student>()
             //    .HasKey(t => new { t.Id });
-            
+
 
             modelBuilder.Entity<Course>()
                 .HasOne(p => p.Teacher)
@@ -27,18 +27,18 @@ namespace StudentTeacherApp.Data
             modelBuilder.Entity<StudentCourse>()
                 .HasOne(p => p.Student)
                 .WithMany(c => c.StudentCourses)
-                .HasForeignKey(fk => fk.StudentId)
-                .HasForeignKey(fk1 => fk1.CourseId);
+                .HasForeignKey(fk => fk.StudentId);
 
+            modelBuilder.Entity<StudentCourse>()
+                .HasOne(p => p.Course)
+                .WithMany(c => c.StudentCourses)
+                .HasForeignKey(fk => fk.CourseId);
         }
 
         public DbSet<Student> Student { get; set; }
         public DbSet<Teacher> Teacher { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<StudentCourse> StudentCourse { get; set; }
-        public DbSet<StudentTeacherApp.Models.TeacherDTO> TeacherDTO { get; set; }
-        public DbSet<StudentTeacherApp.Models.StudentDTO> StudentDTO { get; set; }
-        public DbSet<StudentTeacherApp.Data.Models.CourseDTO> CourseDTO { get; set; }
-        public DbSet<StudentTeacherApp.Data.Models.StudentCourseDTO> StudentCourseDTO { get; set; }
+
     }
 }

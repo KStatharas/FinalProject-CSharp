@@ -47,20 +47,17 @@ namespace StudentTeacherApp.Migrations
 
             modelBuilder.Entity("StudentTeacherApp.Data.Models.StudentCourse", b =>
                 {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("StudentId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"), 1L, 1);
-
                     b.Property<int>("CourseId")
                         .HasColumnType("int")
                         .HasColumnName("CourseId");
 
-                    b.HasKey("StudentId");
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int")
+                        .HasColumnName("StudentId");
 
-                    b.HasIndex("CourseId");
+                    b.HasKey("CourseId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("StudentCourse");
                 });
@@ -130,7 +127,7 @@ namespace StudentTeacherApp.Migrations
 
                     b.HasOne("StudentTeacherApp.Models.Student", "Student")
                         .WithMany("StudentCourses")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

@@ -60,13 +60,12 @@ namespace StudentTeacherApp.Migrations
                 name: "StudentCourse",
                 columns: table => new
                 {
+                    CourseId = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CourseId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourse", x => x.StudentId);
+                    table.PrimaryKey("PK_StudentCourse", x => x.CourseId);
                     table.ForeignKey(
                         name: "FK_StudentCourse_Course_CourseId",
                         column: x => x.CourseId,
@@ -74,8 +73,8 @@ namespace StudentTeacherApp.Migrations
                         principalColumn: "CourseId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StudentCourse_Student_CourseId",
-                        column: x => x.CourseId,
+                        name: "FK_StudentCourse_Student_StudentId",
+                        column: x => x.StudentId,
                         principalTable: "Student",
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
@@ -87,9 +86,9 @@ namespace StudentTeacherApp.Migrations
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StudentCourse_CourseId",
+                name: "IX_StudentCourse_StudentId",
                 table: "StudentCourse",
-                column: "CourseId");
+                column: "StudentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
