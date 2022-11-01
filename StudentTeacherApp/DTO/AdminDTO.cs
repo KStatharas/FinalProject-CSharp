@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using StudentTeacherApp.Data.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.DTO
 {
@@ -9,5 +10,8 @@ namespace StudentTeacherApp.DTO
         public string? Firstname { get; set; }
 
         public string? Lastname { get; set; }
+
+        public User? User { get; set; }
+
     }
 }

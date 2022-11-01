@@ -7,7 +7,8 @@ namespace StudentTeacherApp.Data.Models
     {
         [Key]
         [Column("AdminId")]
-
+        [ForeignKey("User")]
+        [DatabaseGenerated((DatabaseGeneratedOption.None))]
         public int Id { get; set; }
 
         [Column("Firstname")]
@@ -16,5 +17,9 @@ namespace StudentTeacherApp.Data.Models
         [Column("Lastname")]
         public string? Lastname { get; set; }
 
+        //[Column("UserId")]
+        //public int UserId { get; set; }
+
+        public User? User { get; set; }
     }
 }

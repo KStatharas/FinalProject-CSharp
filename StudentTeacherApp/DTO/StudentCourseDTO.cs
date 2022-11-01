@@ -7,13 +7,9 @@ namespace StudentTeacherApp.Data.Models
 {
     public class StudentCourseDTO
     {
-        [ForeignKey("Course")]
-        [Column("CourseId")]
+
         public int CourseId { get; set; }
 
-        [Key]
-        [ForeignKey("Student")]
-        [Column("StudentId")]
         public int StudentId { get; set; }
 
         public StudentDTO ?Student { get; set; }

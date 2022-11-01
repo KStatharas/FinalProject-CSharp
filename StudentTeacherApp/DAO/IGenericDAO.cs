@@ -4,7 +4,7 @@ namespace StudentTeacherApp.DAO
 {
     public interface IGenericDAO
     {
-        public void Add<T>(T t);
+        public int Add<T>(T t);
         public void Update<T>(T t);
         public void Delete<T>(int id);
         public T Get<T>(int id);

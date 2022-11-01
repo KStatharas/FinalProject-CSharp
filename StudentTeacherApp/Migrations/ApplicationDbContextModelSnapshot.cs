@@ -21,6 +21,25 @@ namespace StudentTeacherApp.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("StudentTeacherApp.Data.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("AdminId");
+
+                    b.Property<string>("Firstname")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Firstname");
+
+                    b.Property<string>("Lastname")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Lastname");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admin");
+                });
+
             modelBuilder.Entity("StudentTeacherApp.Data.Models.Course", b =>
                 {
                     b.Property<int>("Id")
@@ -62,14 +81,34 @@ namespace StudentTeacherApp.Migrations
                     b.ToTable("StudentCourse");
                 });
 
-            modelBuilder.Entity("StudentTeacherApp.Models.Student", b =>
+            modelBuilder.Entity("StudentTeacherApp.Data.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("StudentId");
+                        .HasColumnName("UserId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("StudentTeacherApp.Models.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("int")
+                        .HasColumnName("StudentId");
 
                     b.Property<string>("Firstname")
                         .HasColumnType("nvarchar(max)")
@@ -87,11 +126,8 @@ namespace StudentTeacherApp.Migrations
             modelBuilder.Entity("StudentTeacherApp.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("TeacherId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Firstname")
                         .HasColumnType("nvarchar(max)")
@@ -104,6 +140,17 @@ namespace StudentTeacherApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Teacher");
+                });
+
+            modelBuilder.Entity("StudentTeacherApp.Data.Models.Admin", b =>
+                {
+                    b.HasOne("StudentTeacherApp.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StudentTeacherApp.Data.Models.Course", b =>
@@ -122,18 +169,40 @@ namespace StudentTeacherApp.Migrations
                     b.HasOne("StudentTeacherApp.Data.Models.Course", "Course")
                         .WithMany("StudentCourses")
                         .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("StudentTeacherApp.Models.Student", "Student")
                         .WithMany("StudentCourses")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("StudentTeacherApp.Models.Student", b =>
+                {
+                    b.HasOne("StudentTeacherApp.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("StudentTeacherApp.Models.Teacher", b =>
+                {
+                    b.HasOne("StudentTeacherApp.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("StudentTeacherApp.Data.Models.Course", b =>

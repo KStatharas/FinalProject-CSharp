@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MessagePack;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 
 namespace StudentTeacherApp.Data.Models
 {
@@ -7,28 +9,13 @@ namespace StudentTeacherApp.Data.Models
     {
         [Key]
         [Column("UserId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Column("Firstname")]
-        public string? Firstname { get; set; }
+        public string? Username { get; set; }
 
-        [Column("Lastname")]
-        public string? Lastname { get; set; }
+        public string? Password { get; set; }
 
-        [Column("Type")]
         public string? Type { get; set; }
-
-        [Column("TeacherId")]
-        [ForeignKey("Teacher")]
-        public int TeacherId { get; set; }
-
-        [ForeignKey("Student")]
-        [Column("StudentId")]
-        public int StudentId { get; set; }
-
-        [ForeignKey("Admin")]
-        [Column("AdminId")]
-        public int AdminId { get; set; }
-
     }
 }

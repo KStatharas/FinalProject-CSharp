@@ -8,12 +8,10 @@ namespace StudentTeacherApp.Data.Models
     public class StudentCourse
     {
         [Key]
-        [Required]
         [ForeignKey("Course")]
         [Column("CourseId")]
         public int CourseId { get; set; }
 
-        [Required]
         [ForeignKey("Student")]
         [Column("StudentId")]
         public int StudentId { get; set; }

@@ -6,16 +6,16 @@ namespace StudentTeacherApp.Models
 {
     public class StudentDTO
     {
+     
         public int Id { get; set; }
-        
-        [Required]
-        [MinLength(5),MaxLength(60)]
+
         public string? Firstname { get; set; }
 
-        [Required]
-        [MinLength(5), MaxLength(60)]
         public string? Lastname { get; set; }
 
-        public List<StudentCourseDTO> ?StudentCourses { get; set; }
+        public List<StudentCourse> ?StudentCourses { get; set; }
+
+        public User? User { get; set; }
+
     }
 }

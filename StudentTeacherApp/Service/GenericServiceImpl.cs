@@ -2,6 +2,7 @@
 using NuGet.DependencyResolver;
 using StudentTeacherApp.DAO;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.DTO;
 using StudentTeacherApp.Models;
 using System.Collections.Generic;
 
@@ -17,30 +18,42 @@ namespace StudentTeacherApp.Service
             this.genericDAO = genericDAO;
         }
 
-        public void AddEntity<T>(T t)
+        public int AddEntity<T>(T t)
         {
+            int id = 0;
 
             if (typeof(T) == typeof(TeacherDTO))
             {
                 Teacher teacher = ConvertDTO<T, Teacher>(t);
-                genericDAO.Add(teacher);
+                id = genericDAO.Add(teacher);
             }
             else if (typeof(T) == typeof(StudentDTO))
             {
                 Student student = ConvertDTO<T, Student>(t);
-                genericDAO.Add(student);
+                id = genericDAO.Add(student);
             }
             else if (typeof(T) == typeof(CourseDTO))
             {
                 Course course = ConvertDTO<T, Course>(t);
-                genericDAO.Add(course);
+                id = genericDAO.Add(course);
             }
             else if (typeof(T) == typeof(StudentCourseDTO))
             {
                 StudentCourse studentcourse = ConvertDTO<T, StudentCourse>(t);
-                genericDAO.Add(studentcourse);
+                id = genericDAO.Add(studentcourse);
+            }
+            else if (typeof(T) == typeof(AdminDTO))
+            {
+                Admin admin = ConvertDTO<T, Admin>(t);
+                id = genericDAO.Add(admin);
+            }
+            else if (typeof(T) == typeof(UserDTO))
+            {
+                User user = ConvertDTO<T, User>(t);
+                id = genericDAO.Add(user);
             }
 
+            return id;
         }
 
         public void DeleteEntity<T>(int id) => genericDAO.Delete<T>(id);
@@ -80,6 +93,16 @@ namespace StudentTeacherApp.Service
             {
                 StudentCourse studentcourse = ConvertDTO<T, StudentCourse>(t);
                 genericDAO.Update(studentcourse);
+            }
+            else if (typeof(T) == typeof(AdminDTO))
+            {
+                Admin admin = ConvertDTO<T, Admin>(t);
+                genericDAO.Update(admin);
+            }
+            else if (typeof(T) == typeof(UserDTO))
+            {
+                User user = ConvertDTO<T, User>(t);
+                genericDAO.Update(user);
             }
         }
 
@@ -130,6 +153,29 @@ namespace StudentTeacherApp.Service
                     CourseId = tDTO.CourseId
                 };
                 result = (U)(object)studentCourse;
+            }
+            else if (typeof(T) == typeof(AdminDTO))
+            {
+                AdminDTO aDTO = t as AdminDTO;
+                Admin admin = new()
+                {
+                    Id = aDTO.Id,
+                    Firstname = aDTO.Firstname,
+                    Lastname = aDTO.Lastname
+                };
+                result = (U)(object)admin;
+            }
+            else if (typeof(T) == typeof(UserDTO))
+            {
+                UserDTO uDTO = t as UserDTO;
+                User user = new()
+                {
+                    Id = uDTO.Id,
+                    Username = uDTO.Username,
+                    Password = uDTO.Password,
+                    Type = uDTO.Type
+                };
+                result = (U)(object)user;
             }
 
 
@@ -183,6 +229,29 @@ namespace StudentTeacherApp.Service
                     CourseId = studentcourse.CourseId
                 };
                 result = (T)(object)studentCourseDTO;
+            }
+            else if (typeof(U) == typeof(Admin))
+            {
+                Admin admin = u as Admin;
+                AdminDTO adminDTO = new()
+                {
+                    Id = admin.Id,
+                    Firstname = admin.Firstname,
+                    Lastname = admin.Lastname
+                };
+                result = (T)(object)adminDTO;
+            }
+            else if (typeof(U) == typeof(User))
+            {
+                User user = u as User;
+                UserDTO userDTO = new()
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Password = user.Password,
+                    Type = user.Type
+                };
+                result = (T)(object)userDTO;
             }
 
             return result;
