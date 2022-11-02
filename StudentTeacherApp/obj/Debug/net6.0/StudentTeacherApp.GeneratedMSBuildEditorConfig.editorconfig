@@ -31,6 +31,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Admins/AddAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXEFkZEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Admins/DeleteAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXERlbGV0ZUFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Admins/GetAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXEdldEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Admins/GetAdmins.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXEdldEFkbWlucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Admins/UpdateAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5zXFVwZGF0ZUFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Courses/AddCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlc1xBZGRDb3Vyc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -137,6 +157,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Users/GetUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcR2V0VXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Users/GetUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcR2V0VXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/Users/UpdateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlcnNcVXBkYXRlVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/21Buster/source/repos/CSharp-FinalProject/StudentTeacherApp/Pages/_ViewImports.cshtml]

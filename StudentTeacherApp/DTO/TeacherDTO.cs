@@ -1,10 +1,11 @@
 ﻿using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.DTO;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.Models
 {
-    public class TeacherDTO
+    public class TeacherDTO : IFirstName_Lastname
     {
 
         public int Id { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using NuGet.DependencyResolver;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Data.Models;
 using StudentTeacherApp.Models;
@@ -163,27 +164,64 @@ namespace StudentTeacherApp.DAO
 
             if (typeof(T) == typeof(Teacher))
             {
-                _context.Teacher.Update((Teacher)(object)t);
+                Teacher teacher = (Teacher)(object)t;
+                var local = _context.Set<Teacher>().Local.FirstOrDefault(entry => entry.Id.Equals(teacher.Id));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(teacher).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             else if (typeof(T) == typeof(Student))
             {
-                _context.Student.Update((Student)(object)t);
+                Student student = (Student)(object)t;
+                var local = _context.Set<Teacher>().Local.FirstOrDefault(entry => entry.Id.Equals(student.Id));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(student).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             else if (typeof(T) == typeof(Course))
             {
-                _context.Course.Update((Course)(object)t);
+                Course course = (Course)(object)t;
+                var local = _context.Set<Course>().Local.FirstOrDefault(entry => entry.Id.Equals(course.Id));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(course).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             else if (typeof(T) == typeof(StudentCourse))
             {
-                _context.StudentCourse.Update((StudentCourse)(object)t);
+                StudentCourse studentCourse = (StudentCourse)(object)t;
+                var local = _context.Set<StudentCourse>().Local.FirstOrDefault(entry => entry.StudentId.Equals(studentCourse.StudentId));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(studentCourse).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             else if (typeof(T) == typeof(Admin))
             {
-                _context.Admin.Update((Admin)(object)t);
+                Admin admin = (Admin)(object)t;
+                var local = _context.Set<Admin>().Local.FirstOrDefault(entry => entry.Id.Equals(admin.Id));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(admin).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             }
             else if (typeof(T) == typeof(User))
             {
-                _context.User.Update((User)(object)t);
+                User user = (User)(object)t;
+                var local = _context.Set<User>().Local.FirstOrDefault(entry => entry.Id.Equals(user.Id));
+                if (local != null)
+                {
+                    _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                }
+                _context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+
             }
 
             _context.SaveChanges();

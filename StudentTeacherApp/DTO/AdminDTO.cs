@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.DTO
 {
-    public class AdminDTO
+    public class AdminDTO : IFirstName_Lastname
     {
         public int Id { get; set; }
 

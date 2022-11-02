@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model StudentTeacherApp.Pages.Users.GetUserModel
 
 @{
@@ -16,6 +16,18 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserDTO.Username)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserDTO.FirstLast.Firstname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserDTO.FirstLast.Firstname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserDTO.FirstLast.Lastname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserDTO.FirstLast.Lastname)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserDTO.Password)

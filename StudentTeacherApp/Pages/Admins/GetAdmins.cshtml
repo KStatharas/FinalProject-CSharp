@@ -1,0 +1,48 @@
+﻿@page
+@model StudentTeacherApp.Pages.Admins.GetAdminsModel
+
+@{
+    ViewData["Title"] = "GetAdmins";
+}
+
+<h1>GetAdmins</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin[0].Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin[0].Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin[0].User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Admin) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

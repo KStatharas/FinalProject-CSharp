@@ -60,7 +60,17 @@ namespace StudentTeacherApp.Service
 
         public List<T> GetAllEntities<T>() => genericDAO.GetAll<T>();
 
+        public List<UserDTO> GetUserEntities<UserDTO,T>()
+        {
+            List<T> entities = genericDAO.GetAll<T>();
+            List<UserDTO> users = new();
 
+            foreach(T entity in entities){
+                users.Add(ConvertModel<T, UserDTO>(entity));
+            }
+
+            return users;
+        }
         public F GetEntity<F, T>(int id)
         {
             
@@ -104,8 +114,42 @@ namespace StudentTeacherApp.Service
                 User user = ConvertDTO<T, User>(t);
                 genericDAO.Update(user);
             }
+
+            
         }
 
+        public void UpdateUserEntity(UserDTO userDTO, string firstname, string lastname)
+        {
+            User user = ConvertDTO<UserDTO, User>(userDTO);
+            genericDAO.Update(user);
+            switch (userDTO.Type)
+            {
+                case "Admin":
+
+                    AdminDTO adminDTO = GetEntity<AdminDTO, Admin>(userDTO.Id);
+                    adminDTO.Firstname = firstname;
+                    adminDTO.Lastname = lastname;
+                    UpdateEntity<AdminDTO>(adminDTO);
+                    break;
+
+                case "Student":
+
+                    StudentDTO studentDTO = GetEntity<StudentDTO, Student>(userDTO.Id);
+                    studentDTO.Firstname = firstname;
+                    studentDTO.Lastname = lastname;
+                    UpdateEntity<StudentDTO>(studentDTO);
+                    break;
+                case "Teacher":
+
+                    TeacherDTO teacherDTO = GetEntity<TeacherDTO, Teacher>(userDTO.Id);
+                    teacherDTO.Firstname = firstname;
+                    teacherDTO.Lastname = lastname;
+                    UpdateEntity<TeacherDTO>(teacherDTO);
+                    break;
+            }
+
+
+        }
 
         private U ConvertDTO<T, U>(T t)
         {
@@ -243,13 +287,36 @@ namespace StudentTeacherApp.Service
             }
             else if (typeof(U) == typeof(User))
             {
+                IFirstName_Lastname FirstLast;
                 User user = u as User;
+
+                switch (user.Type)
+                {
+                    case "Admin":
+
+                        FirstLast = GetEntity<AdminDTO, Admin>(user.Id);
+                        break;
+                    case "Teacher":
+
+                        FirstLast = GetEntity<TeacherDTO, Teacher>(user.Id);
+                        break;
+                    case "Student":
+
+                        FirstLast = GetEntity<StudentDTO, Student>(user.Id);
+                        break;
+
+                    default:
+                        FirstLast = default;
+                        break;
+                }
+
                 UserDTO userDTO = new()
                 {
                     Id = user.Id,
                     Username = user.Username,
                     Password = user.Password,
-                    Type = user.Type
+                    Type = user.Type,
+                    FirstLast = FirstLast
                 };
                 result = (T)(object)userDTO;
             }

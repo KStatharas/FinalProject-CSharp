@@ -1,4 +1,5 @@
-﻿using StudentTeacherApp.Models;
+﻿using StudentTeacherApp.DTO;
+using StudentTeacherApp.Models;
 
 namespace StudentTeacherApp.Service
 {
@@ -10,6 +11,10 @@ namespace StudentTeacherApp.Service
         public void DeleteEntity<T>(int id);
         public F GetEntity<F,T>(int id);
         public List<T> GetAllEntities<T>();
+
+        public List<UserDTO> GetUserEntities<UserDTO, T>();
+
+        public void UpdateUserEntity(UserDTO userDTO, string firstname, string lastname);
 
     }
 }

@@ -65,6 +65,7 @@ namespace StudentTeacherApp.Data
         public DbSet<Admin> Admin { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<StudentTeacherApp.DTO.UserDTO> UserDTO { get; set; }
+        public DbSet<StudentTeacherApp.DTO.AdminDTO> AdminDTO { get; set; }
 
     }
 }

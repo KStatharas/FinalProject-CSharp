@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTeacherApp.DTO
 {
-    public class UserDTO
+    public class UserDTO 
     {
 
 
@@ -16,6 +16,9 @@ namespace StudentTeacherApp.DTO
         public string? Password { get; set; }
 
         public string? Type { get; set; }
+
+        [NotMapped]
+        public IFirstName_Lastname ?FirstLast { get; set; }
 
     }
 }
