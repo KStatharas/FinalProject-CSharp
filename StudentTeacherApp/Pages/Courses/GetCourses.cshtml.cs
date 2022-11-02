@@ -22,14 +22,26 @@ namespace StudentTeacherApp.Pages.Courses
             _service = service;
         }
 
+        public UserDTO UserDTO { get; set; }
         public IList<Course> Course { get;set; } = default!;
+
+        public bool CourseHandler(int UserId, int CourseId)
+        {
+            return _service.AttendsCourse(UserId, CourseId);
+        }
 
         public async Task OnGetAsync()
         {
+
             if (_service.GetAllEntities<Course>() != null)
             {
                 Course = _service.GetAllEntities<Course>();
             }
+
+            UserDTO = _service.GetUsernameEntity(User.Identity.Name);
+
+
+
         }
 
         //public void OnMyClick(int id)

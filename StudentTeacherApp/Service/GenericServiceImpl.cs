@@ -160,6 +160,10 @@ namespace StudentTeacherApp.Service
             return entity;
         }
 
+        public bool AttendsCourse(int UserId, int CourseId) => genericDAO.AttendsCourse(UserId, CourseId);
+
+        public void LeaveCourse(int UserId, int CourseId) => genericDAO.LeaveCourse(UserId, CourseId);
+
         private U ConvertDTO<T, U>(T t)
         {
             U result = default;
@@ -264,13 +268,16 @@ namespace StudentTeacherApp.Service
             }
             else if (typeof(U) == typeof(Course))
             {
+                IFirstName_Lastname FirsLast;
                 Course course = u as Course;
+
                 CourseDTO courseDTO = new()
                 {
                     Id = course.Id,
                     Description = course.Description,
                     TeacherId = course.TeacherId,
-                };
+                    FirstLast = GetEntity<TeacherDTO, Teacher>(course.TeacherId)
+            };
                 result = (T)(object)courseDTO;
             }
             else if (typeof(U) == typeof(StudentCourse))
@@ -333,6 +340,7 @@ namespace StudentTeacherApp.Service
             return result;
         }
 
+        
     }
 
 }

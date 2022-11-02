@@ -11,5 +11,8 @@ namespace StudentTeacherApp.DAO
         public List<T> GetAll<T>();
 
         public User? GetUsername(string username);
+
+        public bool AttendsCourse(int UserId, int CourseId);
+        public void LeaveCourse(int UserId, int CourseId);
     }
 }

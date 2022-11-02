@@ -18,5 +18,8 @@ namespace StudentTeacherApp.Service
 
         public UserDTO GetUsernameEntity(string username);
 
+        public bool AttendsCourse(int UserId, int CourseId);
+        public void LeaveCourse(int UserId, int CourseId);
+
     }
 }

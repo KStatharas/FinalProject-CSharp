@@ -17,6 +17,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Course[0].TeacherId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course[0].TeacherId)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,11 +41,16 @@
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 }
                 <a asp-page="./GetCourse" asp-route-id="@item.Id">Details</a> 
-                @if (User.IsInRole("Student"))
+                    @if (User.IsInRole("Student"))
                     { 
-                    @*<a asp-page="./../Events/Enroll" asp-route-id="@item.Id"> Enroll</a>*@
-                        <a asp-page-handler="OnClick" class="btn btn-default" method="post">Button</a>
+                        @if(Model.CourseHandler(Model.UserDTO.Id,item.Id)){
+                            <a class="btn btn-danger" asp-page="./../Events/Leave" asp-route-id="@item.Id">Leave</a>
+                        }
+                        else{
+                            <a class="btn btn-success" asp-page="./../Events/Enroll" asp-route-id="@item.Id">Enroll</a>
+                        }
                     }
+                  
             </td>
         </tr>
 }

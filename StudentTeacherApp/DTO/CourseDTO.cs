@@ -1,4 +1,5 @@
-﻿using StudentTeacherApp.Models;
+﻿using StudentTeacherApp.DTO;
+using StudentTeacherApp.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,5 +18,8 @@ namespace StudentTeacherApp.Data.Models
         public TeacherDTO ?Teacher { get; set; }
 
         public List<StudentCourseDTO> ?StudentCourses { get; set; }
+
+        [NotMapped]
+        public IFirstName_Lastname? FirstLast { get; set; }
     }
 }

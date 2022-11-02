@@ -298,5 +298,13 @@ namespace StudentTeacherApp.DAO
             return null;
         }
 
+        public bool AttendsCourse(int UserId, int CourseId) => _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId) != null;
+        public void LeaveCourse(int UserId, int CourseId)
+        {
+            StudentCourse studentCourse = _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId);
+            _context.StudentCourse.Remove(studentCourse);
+         
+            _context.SaveChanges();
+        }
     }
 }

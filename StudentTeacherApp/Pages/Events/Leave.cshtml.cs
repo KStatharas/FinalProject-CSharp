@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.DTO;
 using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.Events
@@ -13,22 +14,15 @@ namespace StudentTeacherApp.Pages.Events
             _service = service;
         }
 
-        //public async Task<IActionResult> OnGetAsync(int id)
-        //{
-        //    string username = User.Identity.Name;
+        public UserDTO UserDTO { get; set; }
 
-        //    UserDTO UserDTO = _service.GetUsernameEntity(username);
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            UserDTO = _service.GetUsernameEntity(User.Identity.Name);
+            _service.LeaveCourse(UserDTO.Id, id);
 
-        //    StudentCourseDTO studentCourseDTO = new StudentCourseDTO()
-        //    {
-        //        StudentId = UserDTO.Id,
-        //        CourseId = id
-        //    };
+            return RedirectToPage("/Index");
 
-        //    _service.AddEntity(studentCourseDTO);
-
-        //    return RedirectToPage("/Index");
-        //}
-
+        }
     }
 }
