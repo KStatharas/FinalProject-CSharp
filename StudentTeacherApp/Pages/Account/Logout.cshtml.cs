@@ -8,7 +8,7 @@ namespace StudentTeacherApp.Pages.Account
     {
         public async Task<IActionResult> OnPostAsync()
         {
-            await HttpContext.SignOutAsync("LoginCredAuth");
+            await HttpContext.SignOutAsync("CredAuth");
             return RedirectToPage("/Index");
         }
     }

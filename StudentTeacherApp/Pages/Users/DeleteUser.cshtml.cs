@@ -10,9 +10,12 @@ using StudentTeacherApp.Data;
 using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 using StudentTeacherApp.Data.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace StudentTeacherApp.Pages.Users
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteUserModel : PageModel
     {
         private readonly IGenericService _service;

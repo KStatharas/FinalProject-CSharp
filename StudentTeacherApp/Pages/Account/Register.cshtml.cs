@@ -51,6 +51,11 @@ namespace StudentTeacherApp.Pages.Account
                 return Page();
             }
 
+            if(UserDTO.Username == _service.GetUsernameEntity(UserDTO.Username).Username)
+            {
+                return RedirectToPage("/Account/AccountExists");
+            }
+
             string? type = UserDTO.Type;
 
             switch (type)

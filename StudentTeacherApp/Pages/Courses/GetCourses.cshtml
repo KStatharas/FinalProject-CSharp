@@ -5,11 +5,9 @@
     ViewData["Title"] = "GetCourses";
 }
 
-<h1>GetCourses</h1>
+<h1>Courses Details</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +15,7 @@
                 @Html.DisplayNameFor(model => model.Course[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Teacher)
+                @Html.DisplayNameFor(model => model.Course[0].TeacherId)
             </th>
             <th></th>
         </tr>
@@ -29,12 +27,19 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Teacher.Id)
+                @Html.DisplayFor(modelItem => item.TeacherId)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                @if (!User.IsInRole("Student")){
+                    <a asp-page="./UpdateCourse" asp-route-id="@item.Id">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                }
+                <a asp-page="./GetCourse" asp-route-id="@item.Id">Details</a> 
+                @if (User.IsInRole("Student"))
+                    { 
+                    @*<a asp-page="./../Events/Enroll" asp-route-id="@item.Id"> Enroll</a>*@
+                        <a asp-page-handler="OnClick" class="btn btn-default" method="post">Button</a>
+                    }
             </td>
         </tr>
 }

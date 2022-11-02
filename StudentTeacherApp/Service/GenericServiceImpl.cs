@@ -151,6 +151,15 @@ namespace StudentTeacherApp.Service
 
         }
 
+        public UserDTO GetUsernameEntity(string username)
+        {
+            var daoResult = genericDAO.GetUsername(username);
+            if (daoResult is null) return default(UserDTO);
+
+            UserDTO entity = ConvertModel<User, UserDTO>(daoResult);
+            return entity;
+        }
+
         private U ConvertDTO<T, U>(T t)
         {
             U result = default;

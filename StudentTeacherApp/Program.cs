@@ -14,9 +14,9 @@ builder.Services.AddScoped<IGenericService, GenericServiceImpl>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddAuthentication("LoginCredAuth").AddCookie("LoginCredAuth", options =>
+builder.Services.AddAuthentication("CredAuth").AddCookie("CredAuth", options =>
 {
-    options.Cookie.Name = "LoginCredAuth";
+    options.Cookie.Name = "CredAuth";
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/ForbiddenAccess";
 });

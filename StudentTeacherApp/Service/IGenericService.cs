@@ -16,5 +16,7 @@ namespace StudentTeacherApp.Service
 
         public void UpdateUserEntity(UserDTO userDTO, string firstname, string lastname);
 
+        public UserDTO GetUsernameEntity(string username);
+
     }
 }

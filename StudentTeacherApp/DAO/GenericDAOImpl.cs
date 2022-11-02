@@ -265,6 +265,8 @@ namespace StudentTeacherApp.DAO
             return default(T);
         }
 
+        public User? GetUsername(string username) => _context.User.FirstOrDefault(x => x.Username == username);
+
         public List<T> GetAll<T>()
         {
 

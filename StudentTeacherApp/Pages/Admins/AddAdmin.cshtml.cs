@@ -9,9 +9,12 @@ using StudentTeacherApp.DTO;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace StudentTeacherApp.Pages.Admins
 {
+    [Authorize(Roles = "Admin")]
     public class AddAdminModel : PageModel
     {
 

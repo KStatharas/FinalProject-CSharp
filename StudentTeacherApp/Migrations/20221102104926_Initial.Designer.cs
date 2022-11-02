@@ -11,7 +11,7 @@ using StudentTeacherApp.Data;
 namespace StudentTeacherApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221101101044_Initial")]
+    [Migration("20221102104926_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -9,5 +9,7 @@ namespace StudentTeacherApp.DAO
         public void Delete<T>(int id);
         public T Get<T>(int id);
         public List<T> GetAll<T>();
+
+        public User? GetUsername(string username);
     }
 }
