@@ -14,22 +14,23 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StudentCourse[0].Student)
+                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Student)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentCourse[0].Course)
+                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Course)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.StudentCourse) {
+        @foreach (var item in Model.StudentCourseDTO)
+        {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Student.Id)
+                @Html.DisplayFor(modelItem => item.StudentId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Course.Id)
+                @Html.DisplayFor(modelItem => item.CourseId)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.StudentId">Edit</a> |

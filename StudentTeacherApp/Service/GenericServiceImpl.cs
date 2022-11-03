@@ -58,19 +58,30 @@ namespace StudentTeacherApp.Service
 
         public void DeleteEntity<T>(int id) => genericDAO.Delete<T>(id);
 
-        public List<T> GetAllEntities<T>() => genericDAO.GetAll<T>();
-
-        public List<UserDTO> GetUserEntities<UserDTO,T>()
+        public List<F> GetAllEntities<F, T>()
         {
             List<T> entities = genericDAO.GetAll<T>();
-            List<UserDTO> users = new();
+            List<F> entityDTOS = new();
 
-            foreach(T entity in entities){
-                users.Add(ConvertModel<T, UserDTO>(entity));
+            foreach (T entity in entities)
+            {
+                entityDTOS.Add(ConvertModel<T, F>(entity));
             }
 
-            return users;
+            return entityDTOS;
         }
+
+        //public List<UserDTO> GetUserEntities<UserDTO,T>()
+        //{
+        //    List<T> entities = genericDAO.GetAll<T>();
+        //    List<UserDTO> users = new();
+
+        //    foreach(T entity in entities){
+        //        users.Add(ConvertModel<T, UserDTO>(entity));
+        //    }
+
+        //    return users;
+        //}
         public F GetEntity<F, T>(int id)
         {
             

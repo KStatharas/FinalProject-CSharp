@@ -12,28 +12,36 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].Description)
+                @Html.DisplayNameFor(model => model.CourseDTO[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].TeacherId)
+                @Html.DisplayNameFor(model => model.CourseDTO[0].TeacherId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].)
+                Teacher Firstname
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Course[0].TeacherId)
+                Teacher Lastname
             </th>
+         
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Course) {
+        @foreach (var item in Model.CourseDTO)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TeacherId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLast.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLast.Lastname)
             </td>
             <td>
                 @if (!User.IsInRole("Student")){

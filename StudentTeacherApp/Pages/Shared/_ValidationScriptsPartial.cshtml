@@ -1,2 +1,14 @@
 ﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $('#submit').prop("disabled", true);
+    $('input:checkbox').click(function () {
+        if ($(this).is(':checked')) {
+            $('#submit').prop("disabled", false);
+        } else {
+            if ($('.checks').filter(':checked').length < 1) {
+                $('#submit').attr('disabled', true);
+            }
+        }
+    });
+</script>

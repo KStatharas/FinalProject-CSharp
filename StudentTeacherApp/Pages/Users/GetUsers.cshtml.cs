@@ -28,9 +28,9 @@ namespace StudentTeacherApp.Pages.Users
 
         public async Task OnGetAsync()
         {
-            if (_service.GetUserEntities<UserDTO,User>() != null)
+            if (_service.GetAllEntities<UserDTO,User>() != null)
             {
-                User = _service.GetUserEntities<UserDTO,User>();
+                User = _service.GetAllEntities<UserDTO,User>();
             }
         }
     }

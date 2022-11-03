@@ -23,7 +23,7 @@ namespace StudentTeacherApp.Pages.Courses
         }
 
         public UserDTO UserDTO { get; set; }
-        public IList<Course> Course { get;set; } = default!;
+        public IList<CourseDTO> CourseDTO { get;set; } = default!;
 
         public bool CourseHandler(int UserId, int CourseId)
         {
@@ -33,9 +33,9 @@ namespace StudentTeacherApp.Pages.Courses
         public async Task OnGetAsync()
         {
 
-            if (_service.GetAllEntities<Course>() != null)
+            if (_service.GetAllEntities<CourseDTO,Course>() != null)
             {
-                Course = _service.GetAllEntities<Course>();
+                CourseDTO = _service.GetAllEntities<CourseDTO,Course>();
             }
 
             UserDTO = _service.GetUsernameEntity(User.Identity.Name);

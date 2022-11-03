@@ -10,9 +10,9 @@ namespace StudentTeacherApp.Service
         public void UpdateEntity<T>(T t);
         public void DeleteEntity<T>(int id);
         public F GetEntity<F,T>(int id);
-        public List<T> GetAllEntities<T>();
+        public List<F> GetAllEntities<F,T>();
 
-        public List<UserDTO> GetUserEntities<UserDTO, T>();
+        //public List<UserDTO> GetUserEntities<UserDTO, T>();
 
         public void UpdateUserEntity(UserDTO userDTO, string firstname, string lastname);
 

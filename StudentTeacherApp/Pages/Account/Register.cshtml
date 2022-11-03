@@ -4,7 +4,7 @@
 }
 
 
-<div class="row">
+@*<div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -38,10 +38,76 @@
             
         </form>
     </div>
+</div>*@
+
+<div class="container border shadow bg-white rounded " style="padding: 10% 10%; width:50%">
+<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-login" href="~/Account/Login/#pills-login" role="tab"
+           aria-controls="pills-login" aria-selected="false">Login</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+           aria-controls="pills-register" aria-selected="true">Register</a>
+    </li>
+</ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+            <form method="post">
+                <div class="form-outline">
+                    <input type="text" input asp-for="Firstname" id="registerName" class="form-control" />
+                    <label class="form-label" for="registerName">First Name</label>
+                </div>
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+
+                <div class="form-outline mt-4">
+                    <input type="text" input asp-for="Lastname" id="registerLastName" class="form-control" />
+                    <label class="form-label" for="registerLastName">Last Name</label>
+                </div>
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+
+                <div class="form-outline mt-4">
+                    <input type="text" input asp-for="UserDTO.Username" id="registerUsername" class="form-control" />
+                    <label class="form-label" for="registerUsername">Username</label>
+                </div>
+                <span asp-validation-for="UserDTO.Username" class="text-danger"></span>
+
+                <div class="form-outline mt-4">
+                    <input type="password" asp-for="UserDTO.Password" id="registerPassword" class="form-control" />
+                    <label class="form-label" for="registerPassword">Password</label>
+                </div>
+                <span asp-validation-for="UserDTO.Password" class="text-danger"></span>
+
+                <div class="form-outline mt-4">
+                    <label class="form-label" for="registerType">Type</label>
+                    <select asp-for="UserDTO.Type" class="form-control border-1" id="" asp-items="ViewBag.Types">
+                        <option value="" selected disabled hidden>Choose here</option>
+                    </select>
+                </div>
+                <span asp-validation-for="UserDTO.Type" class="text-danger"></span>
+
+                <div class="form-check d-flex justify-content-center m-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck"
+                aria-describedby="registerCheckHelpText"/>
+                <label class="form-check-label" for="registerCheck">
+                        I have read and agree to the <a href="~/Privacy">Privacy Policy</a>
+                 </label>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-primary btn-block mb-4 mt-5" >Sign in</button>
+
+                <div class="text-center">
+                    <p>Back to <a asp-page="/Account/Login">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    }
+}

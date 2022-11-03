@@ -19,13 +19,13 @@ namespace StudentTeacherApp.Pages.StudentCourses
             _service = service;
         }
 
-        public IList<StudentCourse> StudentCourse { get;set; } = default!;
+        public IList<StudentCourseDTO> StudentCourseDTO { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_service.GetAllEntities<StudentCourse>() != null)
+            if (_service.GetAllEntities<StudentCourseDTO,StudentCourse>() != null)
             {
-                StudentCourse = _service.GetAllEntities<StudentCourse>();
+                StudentCourseDTO = _service.GetAllEntities<StudentCourseDTO,StudentCourse>();
             }
         }
     }

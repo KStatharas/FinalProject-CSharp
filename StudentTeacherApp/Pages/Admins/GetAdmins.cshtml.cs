@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.DTO;
 using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 
@@ -20,13 +21,13 @@ namespace StudentTeacherApp.Pages.Admins
             _service = service;
         }
 
-        public IList<Admin> Admin { get; set; } = default!;
+        public IList<AdminDTO> AdminDTO { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_service.GetAllEntities<Admin>() != null)
+            if (_service.GetAllEntities<AdminDTO,Admin>() != null)
             {
-                Admin = _service.GetAllEntities<Admin>(); ;
+                AdminDTO = _service.GetAllEntities<AdminDTO,Admin>(); ;
             }
         }
     }

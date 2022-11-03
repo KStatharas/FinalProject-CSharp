@@ -5,6 +5,7 @@ using StudentTeacherApp.Data.Models;
 using StudentTeacherApp.DTO;
 using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
+using System.ComponentModel.DataAnnotations;
 
 namespace StudentTeacherApp.Pages.Account
 {
@@ -38,9 +39,19 @@ namespace StudentTeacherApp.Pages.Account
         public UserDTO UserDTO { get; set; }
 
         [BindProperty]
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "First name is required.")]
+        [MinLength(3)]
+        [MaxLength(55)]
+
         public string Firstname { get; set; }
 
         [BindProperty]
+        [Display(Name = "Last Name")]
+        [Required(ErrorMessage = "Last name is required.")]
+        [MinLength(3)]
+        [MaxLength(55)]
+
         public string Lastname { get; set; }
 
 
@@ -51,7 +62,7 @@ namespace StudentTeacherApp.Pages.Account
                 return Page();
             }
 
-            if(UserDTO.Username == _service.GetUsernameEntity(UserDTO.Username).Username)
+            if (_service.GetUsernameEntity(UserDTO.Username) != null)
             {
                 return RedirectToPage("/Account/AccountExists");
             }

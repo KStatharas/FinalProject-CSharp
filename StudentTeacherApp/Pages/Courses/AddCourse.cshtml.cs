@@ -22,7 +22,7 @@ namespace StudentTeacherApp.Pages.Courses
 
         public IActionResult OnGet()
         {
-            ViewData["TeacherId"] = new SelectList(_service.GetAllEntities<Teacher>(), "Id", "Id");
+            ViewData["TeacherId"] = new SelectList(_service.GetAllEntities<TeacherDTO,Teacher>(), "Id", "Id");
             return Page();
         }
 

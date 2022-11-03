@@ -22,8 +22,8 @@ namespace StudentTeacherApp.Pages.StudentCourses
 
         public IActionResult OnGet()
         {
-            ViewData["CourseId"] = new SelectList(_service.GetAllEntities<Course>(), "Id", "Id");
-            ViewData["StudentId"] = new SelectList(_service.GetAllEntities<Student>(), "Id", "Id");
+            ViewData["CourseId"] = new SelectList(_service.GetAllEntities<CourseDTO,Course>(), "Id", "Id");
+            ViewData["StudentId"] = new SelectList(_service.GetAllEntities<StudentDTO,Student>(), "Id", "Id");
             return Page();
         }
 

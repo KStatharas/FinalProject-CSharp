@@ -1,4 +1,6 @@
-﻿namespace StudentTeacherApp.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StudentTeacherApp.DTO
 {
     public interface IFirstName_Lastname
     {
