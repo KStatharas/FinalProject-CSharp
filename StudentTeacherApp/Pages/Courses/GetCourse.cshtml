@@ -8,20 +8,27 @@
 <h1>Course Details</h1>
 
 <div>
-    <h4>CourseDTO</h4>
+    <h4>Course</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseDTO.Description)
+            Description
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CourseDTO.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CourseDTO.TeacherId)
+            Teacher Id
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CourseDTO.TeacherId)
+        </dd>
+        <dt class="col-sm-2">
+               Theacher's name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CourseDTO.FirstLast.Firstname)
+            @Html.DisplayFor(model => model.CourseDTO.FirstLast.Lastname)
         </dd>
     </dl>
 </div>

@@ -13,7 +13,7 @@ using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.Students
 {
-    [Authorize(Roles = "Student")]
+    [Authorize(Roles = "Admin,Teacher")]
     public class AddStudentModel : PageModel
     {
         private readonly IGenericService _service;

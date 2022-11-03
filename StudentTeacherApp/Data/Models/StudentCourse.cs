@@ -7,13 +7,12 @@ namespace StudentTeacherApp.Data.Models
 {
     public class StudentCourse
     {
-        [Key]
+        [Key, Column("CourseId")]
         [ForeignKey("Course")]
-        [Column("CourseId")]
         public int CourseId { get; set; }
 
+        [Key, Column("StudentId")]
         [ForeignKey("Student")]
-        [Column("StudentId")]
         public int StudentId { get; set; }
 
         public Student Student { get; set; }

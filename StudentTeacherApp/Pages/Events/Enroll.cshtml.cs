@@ -31,7 +31,7 @@ namespace StudentTeacherApp.Pages.Events
 
             _service.AddEntity(studentCourseDTO);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Courses/GetCourses");
         }
 
     }

@@ -11,7 +11,7 @@ using StudentTeacherApp.Data;
 namespace StudentTeacherApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221102104926_Initial")]
+    [Migration("20221103154128_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace StudentTeacherApp.Migrations
                         .HasColumnType("int")
                         .HasColumnName("StudentId");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("CourseId", "StudentId");
 
                     b.HasIndex("StudentId");
 

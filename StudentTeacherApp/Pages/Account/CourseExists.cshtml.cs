@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace StudentTeacherApp.Pages.Account
 {
-    public class ItemExistsModel : PageModel
+    public class CourseExistsModel : PageModel
     {
         public void OnGet()
         {

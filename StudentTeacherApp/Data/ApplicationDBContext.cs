@@ -38,6 +38,9 @@ namespace StudentTeacherApp.Data
                 .HasForeignKey(fk => fk.CourseId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<StudentCourse>()
+                .HasKey(c => new { c.CourseId, c.StudentId });
+
             //modelBuilder.Entity<Student>()
             //    .HasOne(p => p.User)
             //    .WithOne()

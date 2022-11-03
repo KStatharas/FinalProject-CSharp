@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +14,7 @@ using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.Courses
 {
+    [Authorize(Roles = "Admin,Teacher")]
     public class DeleteCourseModel : PageModel
     {
         private readonly IGenericService _service;

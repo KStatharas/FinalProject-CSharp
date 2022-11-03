@@ -44,17 +44,5 @@ namespace StudentTeacherApp.Pages.Courses
 
         }
 
-        //public void OnMyClick(int id)
-        //{
-        //    string username = User.Identity.Name;
-
-        //    UserDTO UserDTO = _service.GetUsernameEntity(username);
-
-        //    StudentCourse studentCourse = new StudentCourse()
-        //    {
-        //        StudentId = UserDTO.Id,
-        //        CourseId = id
-        //    };
-
     }
 }

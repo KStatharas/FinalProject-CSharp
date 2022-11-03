@@ -11,9 +11,12 @@ using StudentTeacherApp.Data;
 using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 using StudentTeacherApp.Data.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace StudentTeacherApp.Pages.Admins
 {
+    [Authorize(Roles = "Admin")]
     public class UpdateAdminModel : PageModel
     {
         private readonly IGenericService _service;

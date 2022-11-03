@@ -30,23 +30,6 @@ namespace StudentTeacherApp.Pages.Account
             
             if (UserDTO != default(UserDTO))
             {
-                //if (Credential.Username == "admin" && Credential.Password == "1234321")
-                //{
-                //    //Claims
-                //    var claims = new List<Claim>
-                //    {
-                //    new Claim(ClaimTypes.Name,"admin"),
-                //    new Claim(ClaimTypes.Email,"admin@schoolsev.gr"),
-                //    new Claim("Admin","User"),
-                //    new Claim(ClaimTypes.Role,"Someone"),
-                //    };
-                //    var identity = new ClaimsIdentity(claims, "LoginCredAuth");
-                //    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-                //    await HttpContext.SignInAsync("LoginCredAuth", principal);
-
-                //    return RedirectToPage("/Index");
-                //}
             
                     var claims = new List<Claim>
                     {
@@ -60,35 +43,6 @@ namespace StudentTeacherApp.Pages.Account
 
                     return RedirectToPage("/Index");
 
-                //else if (UserDTO.Type == "Teacher")
-                //{
-                //    var claims = new List<Claim>
-                //    {
-                //        new Claim(ClaimTypes.Name,Credential.Username),
-                //        new Claim(ClaimTypes.Role,"Teacher")
-                //    };
-                //    var identity = new ClaimsIdentity(claims, "TeacherAuth");
-                //    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-                //    await HttpContext.SignInAsync("TeacherAuth", principal);
-
-                //    return RedirectToPage("/Index");
-                //}
-                //else if (UserDTO.Type =="Student")
-                //{
-                //    var claims = new List<Claim>
-                //    {
-                //        new Claim(ClaimTypes.Name,Credential.Username),
-                //        new Claim(ClaimTypes.Role,"Student")
-                //    };
-                //    var identity = new ClaimsIdentity(claims, "StudentAuth");
-                //    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-
-                //    await HttpContext.SignInAsync("StudentAuth", principal);
-
-                //    return RedirectToPage("/Index");
-                //}
-           
             }
                 return Page();
             

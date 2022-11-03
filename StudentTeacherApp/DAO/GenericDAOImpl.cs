@@ -301,9 +301,18 @@ namespace StudentTeacherApp.DAO
         public bool AttendsCourse(int UserId, int CourseId) => _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId) != null;
         public void LeaveCourse(int UserId, int CourseId)
         {
-            StudentCourse studentCourse = _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId);
-            _context.StudentCourse.Remove(studentCourse);
-         
+            //StudentCourse studentCourse = _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId);
+            //studentCourse.Student = null;
+            //_context.StudentCourse.Remove(studentCourse);
+
+            _context.StudentCourse.Remove
+                ((
+                    from x in _context.StudentCourse
+                    where x.CourseId == CourseId && x.StudentId == UserId
+                    select x
+                  
+                )?.FirstOrDefault()!);
+
             _context.SaveChanges();
         }
     }

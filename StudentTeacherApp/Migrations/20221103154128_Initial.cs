@@ -109,7 +109,7 @@ namespace StudentTeacherApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourse", x => x.CourseId);
+                    table.PrimaryKey("PK_StudentCourse", x => new { x.CourseId, x.StudentId });
                     table.ForeignKey(
                         name: "FK_StudentCourse_Course_CourseId",
                         column: x => x.CourseId,

@@ -12,18 +12,20 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+    
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
                 <label asp-for="StudentCourseDTO.CourseId" class="control-label"></label>
-                <select asp-for="StudentCourseDTO.CourseId" class ="form-control" asp-items="ViewBag.CourseId"></select>
-            </div>
-            <div class="form-group">
+                <select asp-for="StudentCourseDTO.CourseId" class="form-control" asp-items="ViewBag.CourseId"> </select>
+                </div>
+                <div class="form-group">
                 <label asp-for="StudentCourseDTO.StudentId" class="control-label"></label>
-                <select asp-for="StudentCourseDTO.StudentId" class ="form-control" asp-items="ViewBag.StudentId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+                <select asp-for="StudentCourseDTO.StudentId" class="form-control" asp-items="ViewBag.StudentId"> </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" id="courseCreate" value="Create" class="btn btn-primary" onclick=""/>
+                </div>
         </form>
     </div>
 </div>
@@ -31,6 +33,7 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -13,7 +13,7 @@ using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.Teachers
 {
-    [Authorize(Policy = "AdminAccessibility")]
+    [Authorize(Roles = "Admin")]
     public class DeleteTeacherModel : PageModel
     {
         private readonly IGenericService _service;

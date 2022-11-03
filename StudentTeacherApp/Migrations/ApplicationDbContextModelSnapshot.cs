@@ -74,7 +74,7 @@ namespace StudentTeacherApp.Migrations
                         .HasColumnType("int")
                         .HasColumnName("StudentId");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("CourseId", "StudentId");
 
                     b.HasIndex("StudentId");
 

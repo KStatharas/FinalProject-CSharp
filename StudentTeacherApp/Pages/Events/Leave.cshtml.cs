@@ -21,7 +21,7 @@ namespace StudentTeacherApp.Pages.Events
             UserDTO = _service.GetUsernameEntity(User.Identity.Name);
             _service.LeaveCourse(UserDTO.Id, id);
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Courses/GetCourses");
 
         }
     }
