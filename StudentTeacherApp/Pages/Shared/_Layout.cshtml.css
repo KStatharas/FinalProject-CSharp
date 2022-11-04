@@ -7,6 +7,7 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
 a {
   color: #0077cc;
 }
@@ -46,7 +47,6 @@ button.accept-policy {
 }
 
 .footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;

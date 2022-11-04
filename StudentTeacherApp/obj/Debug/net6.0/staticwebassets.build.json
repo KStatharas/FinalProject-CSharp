@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WJvJMLNnESEc5/uVOIeuS51YDADoS7uAKveNLPJKhxw=",
+  "Hash": "iHhVLPkvoo23nLjM8dXEGHada7ow5mlGdvxqXwF27Gk=",
   "Source": "StudentTeacherApp",
   "BasePath": "_content/StudentTeacherApp",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\wwwroot\\image\\img-bg.jpg",
+      "SourceId": "StudentTeacherApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\wwwroot\\",
+      "BasePath": "_content/StudentTeacherApp",
+      "RelativePath": "image/img-bg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\img-bg.jpg"
     },
     {
       "Identity": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\wwwroot\\js\\site.js",

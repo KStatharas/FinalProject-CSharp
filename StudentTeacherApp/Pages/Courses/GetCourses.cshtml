@@ -7,7 +7,7 @@
 
 <h1>Courses</h1>
 
-@if (!User.IsInRole("Admin,Teacher"))
+@if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
 {
     <p>
         <a class="btn btn-success mt-1 mb-3 waves-effect" asp-page="./AddCourse">Create New</a>
