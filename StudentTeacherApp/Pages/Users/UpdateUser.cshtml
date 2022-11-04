@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Edit User";
+    string userid = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
 }
 
 <h1>Edit User</h1>
@@ -19,11 +20,14 @@
                 <span asp-validation-for="UserDTO.Username" class="text-danger"></span>
             </div>
             <br />
-            <div class="form-group">
-                <label asp-for="UserDTO.Password" class="control-label"></label>
-                <input asp-for="UserDTO.Password" class="form-control" />
-                <span asp-validation-for="UserDTO.Password" class="text-danger"></span>
-            </div>
+            @if (Convert.ToString(Model.UserDTO.Id) == userid)
+            {
+                <div class="form-group">
+                    <label asp-for="UserDTO.Password" class="control-label"></label>
+                    <input asp-for="UserDTO.Password" class="form-control"/>
+                    <span asp-validation-for="UserDTO.Password" class="text-danger"></span>
+                </div>
+            }
             <br />
             <div class="form-group">
                 <label asp-for="Firstname" class="control-label"></label>
@@ -51,7 +55,14 @@
 </div>
 
 <div>
-    <a asp-page="./GetUsers">Back to List</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-page="./GetUsers">Back to List</a>
+    }
+    else
+    {
+        <a asp-page=".././Index">Back to Home</a>
+    }
 </div>
 
 @section Scripts {

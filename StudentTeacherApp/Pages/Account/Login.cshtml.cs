@@ -27,6 +27,7 @@ namespace StudentTeacherApp.Pages.Account
             if (!ModelState.IsValid) return Page();
 
             UserDTO UserDTO = _service.GetUsernameEntity(Credential.Username);
+            string id = Convert.ToString(UserDTO.Id);
             
             if (UserDTO != default(UserDTO))
             {
@@ -34,7 +35,8 @@ namespace StudentTeacherApp.Pages.Account
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,Credential.Username),
-                        new Claim(ClaimTypes.Role,UserDTO.Type)
+                        new Claim(ClaimTypes.Role,UserDTO.Type),
+                        new Claim("UserId",id)
                     };
                     var identity = new ClaimsIdentity(claims, "CredAuth");
                     ClaimsPrincipal principal = new ClaimsPrincipal(identity);

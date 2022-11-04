@@ -3,6 +3,10 @@
 {
     <form method="post" class="form-inline" asp-page="/Account/Logout">
         Welcome @User.Identity.Name
+        @{
+            string id = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
+            <a class="btn btn-link" href="~/Users/GetUser/@id">Profile</a>
+        }
         <button type="submit" class="ml-2 btn btn-link">Logout</button>
     </form>
 }

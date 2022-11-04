@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Users";
+    string uid = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
 }
 
 <h1>Users</h1>
@@ -25,9 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.User[0].Username)
             </th>
-            @*<th>
+            <th>
                 @Html.DisplayNameFor(model => model.User[0].Password)
-            </th>*@
+            </th>
             <th>
                 Full Name
             </th>
@@ -49,13 +50,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Username)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>*@
+            @if (Convert.ToString(item.Id) == uid)
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstLast.Firstname)
-                    @Html.DisplayFor(modelItem => item.FirstLast.Lastname)
+                    @Html.DisplayFor(modelItem => item.Password)
                 </td>
+            }
+            else
+            {
+                <td>
+                    •••••••
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstLast.Firstname)
+                @Html.DisplayFor(modelItem => item.FirstLast.Lastname)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Type)
             </td>

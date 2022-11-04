@@ -16,7 +16,7 @@ using System.Data;
 
 namespace StudentTeacherApp.Pages.Users
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Policy = "UserSession")]
     public class UpdateUserModel : PageModel
     {
         private readonly IGenericService _service;
@@ -26,6 +26,7 @@ namespace StudentTeacherApp.Pages.Users
         }
 
         [BindProperty]
+        
         public string Firstname { get; set; }
 
         [BindProperty]
@@ -34,10 +35,12 @@ namespace StudentTeacherApp.Pages.Users
         [BindProperty]
         public UserDTO UserDTO { get; set; } = default!;
 
+        public string uid { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-
+            
+        
             if (_service.GetEntity<UserDTO, User>(id) is default(UserDTO))
             {
                 return NotFound();
@@ -46,6 +49,13 @@ namespace StudentTeacherApp.Pages.Users
             UserDTO = _service.GetEntity<UserDTO, User>(id);
             Firstname = UserDTO.FirstLast.Firstname;
             Lastname = UserDTO.FirstLast.Lastname;
+
+            string uid = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
+
+            if (Convert.ToString(UserDTO.Id) != uid && !User.IsInRole("Admin"))
+            {
+                return RedirectToPage("/Account/ForbiddenAccess");
+            }
 
             return Page();
         }

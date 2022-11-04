@@ -15,7 +15,7 @@ using System.Data;
 
 namespace StudentTeacherApp.Pages.Users
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Policy = "UserSession")]
     public class GetUserModel : PageModel
     {
         private readonly IGenericService _service;
@@ -26,6 +26,8 @@ namespace StudentTeacherApp.Pages.Users
 
         public UserDTO UserDTO { get; set; }
 
+        public string uid { get; set; }
+
         public IActionResult OnGet(int id)
         {
             if (_service.GetEntity<UserDTO, User>(id) is default(UserDTO))
@@ -34,6 +36,13 @@ namespace StudentTeacherApp.Pages.Users
             }
 
             UserDTO = _service.GetEntity<UserDTO, User>(id);
+
+            string uid = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
+
+            if (Convert.ToString(UserDTO.Id) != uid && !User.IsInRole("Admin"))
+            {
+                return RedirectToPage("/Account/ForbiddenAccess");
+            }
 
             return Page();
 
