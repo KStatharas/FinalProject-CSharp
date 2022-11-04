@@ -2,23 +2,34 @@
 @model StudentTeacherApp.Pages.Courses.GetCoursesModel
 
 @{
-    ViewData["Title"] = "GetCourses";
+    ViewData["Title"] = "Courses";
 }
 
-<h1>Courses Details</h1>
+<h1>Courses</h1>
 
-
+@if (!User.IsInRole("Admin,Teacher"))
+{
+    <p>
+        <a class="btn btn-success mt-1 mb-3 waves-effect" asp-page="./AddCourse">Create New</a>
+    </p>
+}
 <table class="table table-striped table-hover">
     <thead class="thead-dark">
         <tr>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.CourseDTO[0].Id)
+                </th>
+            }
             <th>
                 @Html.DisplayNameFor(model => model.CourseDTO[0].Description)
             </th>
             <th>
-                Theacher's Id
+                Theacher Id
             </th>
             <th>
-                Teacher's Name
+                Teacher Name
             </th>
          
             <th></th>
@@ -28,6 +39,12 @@
         @foreach (var item in Model.CourseDTO)
         {
         <tr>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
@@ -39,20 +56,20 @@
                 @Html.DisplayFor(modelItem => item.FirstLast.Lastname)
             </td>
             <td>
+                <a asp-page="./GetCourse" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Details</a>
                 @if (!User.IsInRole("Student")){
-                        <a asp-page="./UpdateCourse" asp-route-id="@item.Id" class="btn btn-info btn m-0 waves-effect">Edit</a>
-                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-info btn m-0 waves-effect">Delete</a>
+                    <a asp-page="./UpdateCourse" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                    <a asp-page="./DeleteCourse" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Delete</a>
                 }
-                    <a asp-page="./GetCourse" asp-route-id="@item.Id" class="btn btn-info btn m-0 waves-effect">Details</a>
-                    @if (User.IsInRole("Student"))
-                    { 
-                        @if(Model.CourseHandler(Model.UserDTO.Id,item.Id)){
-                            <a class="btn btn-danger m-0 waves-effect" asp-page="./../Events/Leave" asp-route-id="@item.Id">Leave</a>
-                        }
-                        else{
-                            <a class="btn btn-success m-0 waves-effect" asp-page="./../Events/Enroll" asp-route-id="@item.Id">Enroll</a>
-                        }
+                @if (User.IsInRole("Student"))
+                { 
+                    @if(Model.CourseHandler(Model.UserDTO.Id,item.Id)){
+                        <a class="btn btn-danger m-0 waves-effect" asp-page="./../Events/Leave" asp-route-id="@item.Id">Leave</a>
                     }
+                    else{
+                        <a class="btn btn-success m-0 waves-effect" asp-page="./../Events/Enroll" asp-route-id="@item.Id">Enroll</a>
+                    }
+                }
                   
             </td>
         </tr>

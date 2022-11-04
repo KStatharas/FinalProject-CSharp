@@ -1,4 +1,5 @@
-﻿using StudentTeacherApp.DTO;
+﻿using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.DTO;
 using StudentTeacherApp.Models;
 
 namespace StudentTeacherApp.Service
@@ -18,8 +19,8 @@ namespace StudentTeacherApp.Service
 
         public UserDTO GetUsernameEntity(string username);
 
-        public bool AttendsCourse(int UserId, int CourseId);
-        public void LeaveCourse(int UserId, int CourseId);
+        public StudentCourseDTO GetCourse(int UserId, int CourseId);
+        public void DeleteCourse(int UserId, int CourseId);
 
     }
 }

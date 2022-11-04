@@ -2,22 +2,26 @@
 @model GetStudentCoursesModel
 
 @{
-    ViewData["Title"] = "GetStudentCourses";
+    ViewData["Title"] = "Student Courses";
 }
 
-<h1>GStudent Courses' Details</h1>
+<h1>Student Courses</h1>
 
-<p>
-    <a asp-page="./AddStudentCourse">Create New</a>
-</p>
+
+@if (User.IsInRole("Admin,Teacher"))
+{
+    <p>
+        <a class="btn btn-success mt-1 mb-3 waves-effect" asp-page="./AddStudentCourse">Create New</a>
+    </p>
+}
 <table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Student)
+                Student Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StudentCourseDTO[0].Course)
+                Course Id
             </th>
             <th></th>
         </tr>
@@ -33,9 +37,14 @@
                 @Html.DisplayFor(modelItem => item.CourseId)
             </td>
             <td>
-                    <a asp-page="./Edit" asp-route-id="@item.StudentId" class="btn btn-outline-primary btn m-0 waves-effect">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.StudentId" class="btn btn-outline-primary btn m-0 waves-effect">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.StudentId" class="btn btn-outline-primary btn m-0 waves-effect">Delete</a>
+
+
+                    @if (!User.IsInRole("Student"))
+                    {
+                        <a asp-page="./GetStudentCourse" asp-route-studentid="@item.StudentId" asp-route-courseid="@item.CourseId" class="btn btn-info m-0 waves-effect">Details</a>
+                        <a asp-page="./UpdateStudentCourse" asp-route-studentid="@item.StudentId" asp-route-courseid="@item.CourseId" class="btn btn-info m-0 waves-effect">Edit</a>
+                        <a asp-page="./DeleteStudentCourse" asp-route-studentid="@item.StudentId" asp-route-courseid="@item.CourseId" class="btn btn-info m-0 waves-effect">Delete</a>
+                    }
             </td>
         </tr>
 }

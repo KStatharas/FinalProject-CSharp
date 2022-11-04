@@ -19,7 +19,7 @@ namespace StudentTeacherApp.Pages.Events
         public async Task<IActionResult> OnGetAsync(int id)
         {
             UserDTO = _service.GetUsernameEntity(User.Identity.Name);
-            _service.LeaveCourse(UserDTO.Id, id);
+            _service.DeleteCourse(UserDTO.Id, id);
 
             return RedirectToPage("/Courses/GetCourses");
 

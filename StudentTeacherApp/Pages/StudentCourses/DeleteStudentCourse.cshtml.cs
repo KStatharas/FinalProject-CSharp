@@ -26,30 +26,27 @@ namespace StudentTeacherApp.Pages.StudentCourses
         [BindProperty]
         public StudentCourseDTO StudentCourseDTO { get; set; }
 
-        public async Task<IActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet(int studentid, int courseid)
         {
 
-            var studentcoursedto = _service.GetEntity<StudentCourseDTO,StudentCourse>(id);
+            StudentCourseDTO = _service.GetCourse(studentid, courseid);
 
-            if (studentcoursedto is default(StudentCourseDTO))
+            if (StudentCourseDTO is null)
             {
                 return NotFound();
             }
-            else
-            {
-                StudentCourseDTO = studentcoursedto;
-            }
+           
             return Page();
         }
 
-        public IActionResult OnPost(int id)
+        public IActionResult OnPost(int studentid, int courseid)
         {
-            if (_service.GetEntity<StudentCourseDTO, StudentCourse>(id) is default(StudentCourseDTO))
+            if (_service.GetCourse(studentid, courseid) is null)
             {
                 return NotFound();
             }
 
-            _service.DeleteEntity<StudentCourse>(id);
+            _service.DeleteCourse(studentid, courseid);
 
             return RedirectToPage("/Index");
         }

@@ -23,8 +23,14 @@ a[b-hy93jsje6p] {
   border-color: #1861ac;
 }
 
+btn btn-link[b-hy93jsje6p] {
+    font-weight: bold;
+    background-color: #d8d8d8;
+    border-color: #1861ac;
+}
+
 .border-top[b-hy93jsje6p] {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom[b-hy93jsje6p] {
   border-bottom: 1px solid #e5e5e5;

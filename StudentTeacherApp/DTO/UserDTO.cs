@@ -24,6 +24,7 @@ namespace StudentTeacherApp.DTO
         public string? Password { get; set; }
 
         [Required(ErrorMessage = "Type is required.")]
+        [Display(Name = "Role")]
         public string? Type { get; set; }
 
         [NotMapped]

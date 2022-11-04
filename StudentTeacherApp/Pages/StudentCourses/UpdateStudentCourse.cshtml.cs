@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.StudentCourses
@@ -26,17 +27,18 @@ namespace StudentTeacherApp.Pages.StudentCourses
         [BindProperty]
         public StudentCourseDTO StudentCourseDTO { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int studentid, int courseid)
         {
-            if (_service.GetEntity<StudentCourseDTO,StudentCourse>(id) is default(StudentCourseDTO))
+            ViewData["CourseId"] = new SelectList(_service.GetAllEntities<CourseDTO, Course>(), "Id", "Id");
+            ViewData["StudentId"] = new SelectList(_service.GetAllEntities<StudentDTO, Student>(), "Id", "Id");
+
+            StudentCourseDTO = _service.GetCourse(studentid, courseid);
+
+            if (StudentCourseDTO is null)
             {
                 return NotFound();
             }
 
-            StudentCourseDTO = _service.GetEntity<StudentCourseDTO, StudentCourse>(id);
-           
-           //ViewData["CourseId"] = new SelectList(_context.CourseDTO, "Id", "Id");
-           //ViewData["StudentId"] = new SelectList(_context.StudentDTO, "Id", "Id");
             return Page();
         }
 
@@ -48,7 +50,12 @@ namespace StudentTeacherApp.Pages.StudentCourses
                 return Page();
             }
 
-            _service.UpdateEntity<StudentCourseDTO>(StudentCourseDTO);
+            if (_service.GetCourse(StudentCourseDTO.StudentId, StudentCourseDTO.CourseId) != null)
+            {
+                return RedirectToPage("/Account/CourseExists");
+            }
+
+            _service.UpdateEntity(StudentCourseDTO);
 
             //_context.Attach(StudentCourseDTO).State = EntityState.Modified;
 

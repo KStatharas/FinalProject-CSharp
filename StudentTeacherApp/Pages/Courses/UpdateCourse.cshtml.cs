@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StudentTeacherApp.Data;
 using StudentTeacherApp.Data.Models;
+using StudentTeacherApp.Models;
 using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.Courses
@@ -29,6 +30,7 @@ namespace StudentTeacherApp.Pages.Courses
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            ViewData["TeacherId"] = new SelectList(_service.GetAllEntities<TeacherDTO, Teacher>(), "Id", "Id");
             if (_service.GetEntity<CourseDTO, Course>(id) is default(CourseDTO))
             {
                 return NotFound();
@@ -47,7 +49,7 @@ namespace StudentTeacherApp.Pages.Courses
                 return Page();
             }
 
-            _service.UpdateEntity<CourseDTO>(CourseDTO);
+            _service.UpdateEntity(CourseDTO);
 
             //_context.Attach(CourseDTO).State = EntityState.Modified;
 

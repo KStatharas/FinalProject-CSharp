@@ -12,7 +12,8 @@ namespace StudentTeacherApp.DAO
 
         public User? GetUsername(string username);
 
-        public bool AttendsCourse(int UserId, int CourseId);
-        public void LeaveCourse(int UserId, int CourseId);
+        public StudentCourse GetCourse(int UserId, int CourseId);
+        public void DeleteCourse(int UserId, int CourseId);
+
     }
 }

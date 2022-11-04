@@ -13,7 +13,7 @@ using StudentTeacherApp.Service;
 
 namespace StudentTeacherApp.Pages.StudentCourses
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Teacher")]
     public class GetStudentCourseModel : PageModel
     {
         private readonly IGenericService _service;
@@ -24,14 +24,14 @@ namespace StudentTeacherApp.Pages.StudentCourses
 
         public StudentCourseDTO StudentCourseDTO { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(int studentid,int courseid)
         {
-            if (_service.GetEntity<StudentCourseDTO,StudentCourse>(id) is default(StudentCourseDTO))
+            StudentCourseDTO = _service.GetCourse(studentid, courseid);
+
+            if (StudentCourseDTO is null)
             {
                 return NotFound();
             }
-
-            StudentCourseDTO = _service.GetEntity<StudentCourseDTO,StudentCourse>(id);
 
             return Page();
         }

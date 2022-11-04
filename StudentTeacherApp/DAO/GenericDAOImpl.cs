@@ -93,7 +93,10 @@ namespace StudentTeacherApp.DAO
 
                 _context.Teacher.Remove(teacher);
 
+                User? user = _context.User.FirstOrDefault(x => x.Id == id);
+                _context.User.Remove(user);
             }
+
             else if (typeof(T) == typeof(Student))
             {
                 Student? student = _context.Student.FirstOrDefault(x => x.Id == id);
@@ -101,7 +104,11 @@ namespace StudentTeacherApp.DAO
                 studentcourse = _context.StudentCourse.FirstOrDefault(x => x.StudentId == id);
                 if (studentcourse != null) _context.StudentCourse.Remove(studentcourse);
                 _context.Student.Remove(student);
+
+                User? user = _context.User.FirstOrDefault(x => x.Id == id);
+                _context.User.Remove(user);
             }
+
             else if (typeof(T) == typeof(Course))
             {
                 Course? course = _context.Course.FirstOrDefault(x => x.Id == id);
@@ -111,16 +118,22 @@ namespace StudentTeacherApp.DAO
 
                 _context.Course.Remove(course);
             }
+
             else if (typeof(T) == typeof(StudentCourse))
             {
                 StudentCourse? studentcourse = _context.StudentCourse.FirstOrDefault(x => x.StudentId == id);
                  _context.StudentCourse.Remove(studentcourse);
             }
+
             else if (typeof(T) == typeof(Admin))
             {
                 Admin? admin = _context.Admin.FirstOrDefault(x => x.Id == id);
                 _context.Admin.Remove(admin);
+
+                User? user = _context.User.FirstOrDefault(x => x.Id == id);
+                _context.User.Remove(user);
             }
+
             else if (typeof(T) == typeof(User))
             {
                 User? user = _context.User.FirstOrDefault(x => x.Id == id);
@@ -128,8 +141,7 @@ namespace StudentTeacherApp.DAO
                 {
                     case "Admin":
 
-                        Admin? admin = _context.Admin.FirstOrDefault(x => x.Id == id);
-                        _context.Admin.Remove(admin);
+                        Delete<Admin>(id);
                         break;
 
                     case "Teacher":
@@ -143,16 +155,12 @@ namespace StudentTeacherApp.DAO
                         break;
 
                     default:
+
+                        _context.User.Remove(user);
                         break;
                 }
-                _context.User.Remove(user);
-
             }
-
             _context.SaveChanges();
-
-
-
 
         }
 
@@ -298,8 +306,8 @@ namespace StudentTeacherApp.DAO
             return null;
         }
 
-        public bool AttendsCourse(int UserId, int CourseId) => _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId) != null;
-        public void LeaveCourse(int UserId, int CourseId)
+        public StudentCourse? GetCourse(int UserId, int CourseId) => _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId);
+        public void DeleteCourse(int UserId, int CourseId)
         {
             //StudentCourse studentCourse = _context.StudentCourse.FirstOrDefault(x => x.CourseId == CourseId && x.StudentId == UserId);
             //studentCourse.Student = null;
@@ -315,5 +323,6 @@ namespace StudentTeacherApp.DAO
 
             _context.SaveChanges();
         }
+
     }
 }

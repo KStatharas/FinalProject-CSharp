@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: rgb(221, 253, 255)">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: #BBDDD4">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">School AUEB</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -31,15 +31,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Courses/GetCourses">Courses</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Teachers/GetTeachers">Teachers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Students/GetStudents">Students</a>
-                        </li>
                         @if (User.IsInRole("Admin")){
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Users/GetUsers">Users</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Admin") || User.IsInRole("Teacher"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/StudentCourses/GetStudentCourses">Student Courses </a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Teachers/GetTeachers">Teachers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Students/GetStudents">Students</a>
                             </li>
                         }
                     </ul>

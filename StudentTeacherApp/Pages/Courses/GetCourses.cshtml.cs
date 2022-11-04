@@ -27,7 +27,7 @@ namespace StudentTeacherApp.Pages.Courses
 
         public bool CourseHandler(int UserId, int CourseId)
         {
-            return _service.AttendsCourse(UserId, CourseId);
+            return _service.GetCourse(UserId, CourseId) != null;
         }
 
         public async Task OnGetAsync()

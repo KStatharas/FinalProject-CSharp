@@ -2,12 +2,11 @@
 @model StudentTeacherApp.Pages.Admins.UpdateAdminModel
 
 @{
-    ViewData["Title"] = "UpdateAdmin";
+    ViewData["Title"] = "Edit Admin";
 }
 
-<h1>Update Admin</h1>
+<h1>Edit Admin</h1>
 
-<h4>AdminDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,20 +18,22 @@
                 <input asp-for="AdminDTO.Firstname" class="form-control" />
                 <span asp-validation-for="AdminDTO.Firstname" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="AdminDTO.Lastname" class="control-label"></label>
                 <input asp-for="AdminDTO.Lastname" class="form-control" />
-                <span asp-validation-for="AdminDTO.Lastname" class="text-danger"></span>
+                <span asp-validation-for="AdminDTO.Lastname" class="btn btn-primary mt-5 mb-2"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary mt-5 mb-2" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./GetAdmins">Back to List</a>
 </div>
 
 @section Scripts {

@@ -71,6 +71,8 @@ namespace StudentTeacherApp.Service
             return entityDTOS;
         }
 
+
+
         //public List<UserDTO> GetUserEntities<UserDTO,T>()
         //{
         //    List<T> entities = genericDAO.GetAll<T>();
@@ -171,9 +173,17 @@ namespace StudentTeacherApp.Service
             return entity;
         }
 
-        public bool AttendsCourse(int UserId, int CourseId) => genericDAO.AttendsCourse(UserId, CourseId);
+        public StudentCourseDTO GetCourse(int UserId, int CourseId)
+        {
+            var daoResult = genericDAO.GetCourse(UserId, CourseId);
+            if (daoResult is null) return null;
 
-        public void LeaveCourse(int UserId, int CourseId) => genericDAO.LeaveCourse(UserId, CourseId);
+            StudentCourseDTO course = ConvertModel<StudentCourse, StudentCourseDTO>(daoResult);
+            return course;
+        } 
+
+        public void DeleteCourse(int UserId, int CourseId) => genericDAO.DeleteCourse(UserId, CourseId);
+
 
         private U ConvertDTO<T, U>(T t)
         {
@@ -351,7 +361,7 @@ namespace StudentTeacherApp.Service
             return result;
         }
 
-        
+     
     }
 
 }

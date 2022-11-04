@@ -39,7 +39,10 @@ namespace StudentTeacherApp.Pages.StudentCourses
             {
                 return Page();
             }
-            if (_service.AttendsCourse(StudentCourseDTO.StudentId, StudentCourseDTO.CourseId)) return RedirectToPage("/Account/CourseExists");
+            if (_service.GetCourse(StudentCourseDTO.StudentId, StudentCourseDTO.CourseId) != null)
+            {
+                return RedirectToPage("/Account/CourseExists");
+            }
 
             _service.AddEntity(StudentCourseDTO);
 
