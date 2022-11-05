@@ -18,10 +18,6 @@ namespace StudentTeacherApp.Models
         [Column("Lastname")]
         public string? Lastname { get; set; }
 
-        //[Column("UserId")]
-        //[ForeignKey("User")]
-        //public int UserId { get; set; }
-
         public List<StudentCourse> StudentCourses { get; set; }
 
         public User? User { get; set; }

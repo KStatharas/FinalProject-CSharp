@@ -23,9 +23,7 @@ builder.Services.AddAuthentication("CredAuth").AddCookie("CredAuth", options =>
 
 builder.Services.AddAuthorization(options =>
 {
-    //options.AddPolicy("UserSession",
-    //    policy => policy.RequireClaim("UserId"));
-
+    
     options.AddPolicy("UserSession", policy =>
         policy.RequireAssertion(context =>
             context.User.HasClaim(c => c.Value == "Admin") ||

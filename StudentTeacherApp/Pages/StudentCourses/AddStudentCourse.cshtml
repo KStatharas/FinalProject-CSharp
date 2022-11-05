@@ -2,12 +2,11 @@
 @model AddStudentCourseModel
 
 @{
-    ViewData["Title"] = "Add Student's Course";
+    ViewData["Title"] = "Add Student to Course";
 }
 
-<h1>Add Student's Course</h1>
+<h1>Add Student to Course</h1>
 
-<h4>StudentCourseDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,14 +23,14 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" id="courseCreate" value="Create" class="btn btn-primary" onclick=""/>
+                <input type="submit" id="courseCreate" value="Create" class="btn btn-primary mt-5 mb-2" />
                 </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="./GetStudentCourses">Back to List</a>
 </div>
 
 

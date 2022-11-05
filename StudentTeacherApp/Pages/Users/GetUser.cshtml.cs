@@ -26,8 +26,6 @@ namespace StudentTeacherApp.Pages.Users
 
         public UserDTO UserDTO { get; set; }
 
-        public string uid { get; set; }
-
         public IActionResult OnGet(int id)
         {
             if (_service.GetEntity<UserDTO, User>(id) is default(UserDTO))

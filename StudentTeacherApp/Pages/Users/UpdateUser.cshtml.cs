@@ -31,11 +31,8 @@ namespace StudentTeacherApp.Pages.Users
 
         [BindProperty]
         public string Lastname { get; set; }
-
         [BindProperty]
         public UserDTO UserDTO { get; set; } = default!;
-
-        public string uid { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -52,7 +49,12 @@ namespace StudentTeacherApp.Pages.Users
 
             string uid = User.Claims.FirstOrDefault(x => x.Type == "UserId").Value;
 
-            if (Convert.ToString(UserDTO.Id) != uid && !User.IsInRole("Admin"))
+            //if (Convert.ToString(UserDTO.Id) != uid && !User.IsInRole("Admin"))
+            //{
+            //    return RedirectToPage("/Account/ForbiddenAccess");
+            //}
+
+            if (Convert.ToString(UserDTO.Id) != uid)
             {
                 return RedirectToPage("/Account/ForbiddenAccess");
             }
@@ -63,11 +65,11 @@ namespace StudentTeacherApp.Pages.Users
 
         public IActionResult OnPost()
         {
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
             _service.UpdateUserEntity(UserDTO, Firstname, Lastname);
 
             //_context.Attach(StudentDTO).State = EntityState.Modified;

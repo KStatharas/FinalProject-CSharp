@@ -20,7 +20,14 @@
                 <span asp-validation-for="UserDTO.Username" class="text-danger"></span>
             </div>
             <br />
-            @if (Convert.ToString(Model.UserDTO.Id) == userid)
+
+            <div class="form-group">
+                <label asp-for="UserDTO.Password" class="control-label"></label>
+                <input asp-for="UserDTO.Password" class="form-control" />
+                <span asp-validation-for="UserDTO.Password" class="text-danger"></span>
+            </div>
+
+            @*@if (Convert.ToString(Model.UserDTO.Id) == userid)
             {
                 <div class="form-group">
                     <label asp-for="UserDTO.Password" class="control-label"></label>
@@ -28,6 +35,11 @@
                     <span asp-validation-for="UserDTO.Password" class="text-danger"></span>
                 </div>
             }
+            else
+            {
+                <input asp-for="UserDTO.Password" class="form-control" hidden/>
+            }*@
+
             <br />
             <div class="form-group">
                 <label asp-for="Firstname" class="control-label"></label>

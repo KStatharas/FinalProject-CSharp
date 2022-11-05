@@ -73,7 +73,10 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-page="./GetUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Details</a>
-                        <a asp-page="./UpdateUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                        @if (Convert.ToString(item.Id) == uid)
+                        {
+                            <a asp-page="./UpdateUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                        }
                         <a asp-page="./DeleteUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Delete</a>
                     }
             </td>
