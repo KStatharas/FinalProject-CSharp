@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj": {}
+    "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj": {
+    "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj",
+        "projectUniqueName": "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj",
         "projectName": "StudentTeacherApp",
-        "projectPath": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj",
+        "projectPath": "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj",
         "packagesPath": "C:\\Users\\21Buster\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\obj\\",
+        "outputPath": "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

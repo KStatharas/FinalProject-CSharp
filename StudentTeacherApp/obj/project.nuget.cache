@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IW1GhvVjucd4Vhsxx4Z2VT8ox2o/Vb1bzQ/QYJuz/nBVjVrHwmPJpK+Ar2H2XFZCWklXm4KiTaX3L+jT0lzBtQ==",
+  "dgSpecHash": "Op2lClOVrZXhuGDsg8GW3hL84NMQLMsxywiK91ya7Wl3SA8vLUMD5Oplrv8FldiQ28FpCYD7fPl34+Oy2bsY0g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\21Buster\\source\\repos\\CSharp-FinalProject\\StudentTeacherApp\\StudentTeacherApp.csproj",
+  "projectFilePath": "C:\\Users\\21Buster\\Desktop\\MyProjects\\AUEB Final Project - Backup\\FinalProject-CSharp\\StudentTeacherApp\\StudentTeacherApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\21Buster\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\21Buster\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

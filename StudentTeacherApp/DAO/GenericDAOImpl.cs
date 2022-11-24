@@ -183,7 +183,7 @@ namespace StudentTeacherApp.DAO
             else if (typeof(T) == typeof(Student))
             {
                 Student student = (Student)(object)t;
-                var local = _context.Set<Teacher>().Local.FirstOrDefault(entry => entry.Id.Equals(student.Id));
+                var local = _context.Set<Student>().Local.FirstOrDefault(entry => entry.Id.Equals(student.Id));
                 if (local != null)
                 {
                     _context.Entry(local).State = Microsoft.EntityFrameworkCore.EntityState.Detached;

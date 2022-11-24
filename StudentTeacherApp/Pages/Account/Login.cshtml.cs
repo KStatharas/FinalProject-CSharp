@@ -27,24 +27,29 @@ namespace StudentTeacherApp.Pages.Account
             if (!ModelState.IsValid) return Page();
 
             UserDTO UserDTO = _service.GetUsernameEntity(Credential.Username);
-            string id = Convert.ToString(UserDTO.Id);
             
             if (UserDTO != default(UserDTO))
             {
+                string id = Convert.ToString(UserDTO.Id);
+
             
-                    var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name,Credential.Username),
-                        new Claim(ClaimTypes.Role,UserDTO.Type),
-                        new Claim("UserId",id)
-                    };
-                    var identity = new ClaimsIdentity(claims, "CredAuth");
-                    ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,Credential.Username),
+                    new Claim(ClaimTypes.Role,UserDTO.Type),
+                    new Claim("UserId",id)
+                };
+                var identity = new ClaimsIdentity(claims, "CredAuth");
+                ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
-                    await HttpContext.SignInAsync("CredAuth", principal);
+                await HttpContext.SignInAsync("CredAuth", principal);
 
-                    return RedirectToPage("/Index");
+                return RedirectToPage("/Index");
 
+            }
+            else
+            {
+                return RedirectToPage("/Account/UserDoesntExist");
             }
                 return Page();
             

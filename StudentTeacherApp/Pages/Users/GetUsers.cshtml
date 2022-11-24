@@ -77,6 +77,22 @@
                         {
                             <a asp-page="./UpdateUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
                         }
+                        else
+                        {
+                            @if(item.Type == "Admin")
+                            {
+                                <a asp-page="/Admins/UpdateAdmin" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                            }
+                            @if(item.Type == "Student")
+                            {
+                                <a asp-page="/Students/UpdateStudent" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                            }
+                            @if(item.Type == "Teacher")
+                            {
+                                <a asp-page="/Teachers/UpdateTeacher" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Edit</a>
+                            }
+                            
+                        }
                         <a asp-page="./DeleteUser" asp-route-id="@item.Id" class="btn btn-info m-0 waves-effect">Delete</a>
                     }
             </td>
